@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aiTi - Novedades y Versiones</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <meta name="description" content="Historial de versiones y novedades de aiTi - Sistema de Gestión Integral de Infraestructura IT.">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolled" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="index.html">
+                <img src="img/logo_aiti_icon.svg" alt="aiTi" width="40" height="40" class="me-2" style="vertical-align: middle;"><span style="color:#fff;">ai</span><span style="color:#4ECDC4;">T</span><span style="color:#fff;">i</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link fs-5" href="index.html#funcionalidades">Funcionalidades</a></li>
+                    <li class="nav-item"><a class="nav-link fs-5" href="index.html#descarga">Descarga</a></li>
+                    <li class="nav-item"><a class="nav-link fs-5 active" href="novedades.html">Novedades</a></li>
+                    <li class="nav-item"><a class="nav-link fs-5" href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="py-5" style="padding-top: 120px !important;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="fw-bold"><i class="bi bi-journal-text me-2"></i>Novedades</h1>
+                <p class="text-muted">Historial de versiones y mejoras del producto</p>
+            </div>
+
+            <!-- Timeline de versiones -->
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+
+                    <!-- v3.5.2 -->
+                    <div class="changelog-entry mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge bg-primary fs-6 me-3">v3.5.2</span>
+                            <span class="text-muted">Junio 2026</span>
+                            <span class="badge bg-success ms-3">Actual</span>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h6 class="fw-bold text-success mb-2"><i class="bi bi-plus-circle me-1"></i>Nuevas funcionalidades</h6>
+                                <ul class="mb-3">
+                                    <li>Módulo IPAM: gestión de direccionamiento IP, subredes, detección de duplicados y escaneo de red</li>
+                                    <li>Módulo Telefonía: gestión de tramas, internos, numeración por central y edición inline</li>
+                                    <li>Agenda de contactos profesional con importación masiva, categorías y sitios asociados</li>
+                                    <li>Sistema de licencias con firma digital Ed25519 y vinculación por Machine ID</li>
+                                    <li>Preview antes de importar: visualización y selección por fila en las 6 importaciones</li>
+                                    <li>Multi-área: aislamiento completo por Grupo de Área con sidebar dinámico</li>
+                                    <li>Automatizaciones programadas con Celery Beat</li>
+                                    <li>Agenda institucional: contactos globales visibles para todos los grupos</li>
+                                </ul>
+
+                                <h6 class="fw-bold text-info mb-2"><i class="bi bi-arrow-up-circle me-1"></i>Mejoras</h6>
+                                <ul class="mb-3">
+                                    <li>Instalador self-contained: incluye Python, MariaDB y Redis embebidos</li>
+                                    <li>Catálogos con visibilidad por grupo (herencia Tipo → Marca → Modelo)</li>
+                                    <li>Selector de grupo activo en navbar para usuarios multi-grupo</li>
+                                    <li>Campos dinámicos configurables por tipo de equipo</li>
+                                    <li>Optimización de performance para +2000 equipos</li>
+                                    <li>Exportación de contactos en Excel, CSV y PDF</li>
+                                </ul>
+
+                                <h6 class="fw-bold text-warning mb-2"><i class="bi bi-wrench me-1"></i>Correcciones</h6>
+                                <ul class="mb-0">
+                                    <li>Compatibilidad SQLite para desarrollo local</li>
+                                    <li>Desinstalación limpia de servicios y datos</li>
+                                    <li>Fix en importación Excel: decimales en teléfonos e internos</li>
+                                    <li>Mejoras de UX en wizard de instalación</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- v3.5 -->
+                    <div class="changelog-entry mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge bg-secondary fs-6 me-3">v3.5</span>
+                            <span class="text-muted">Mayo 2026</span>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h6 class="fw-bold text-success mb-2"><i class="bi bi-plus-circle me-1"></i>Nuevas funcionalidades</h6>
+                                <ul class="mb-3">
+                                    <li>Control de Acceso por Grupos de Área (multi-tenant)</li>
+                                    <li>Sidebar dinámico según features habilitados por grupo</li>
+                                    <li>Campos dinámicos por Tipo de Equipo</li>
+                                    <li>Mapa VPN integrado con conexiones entre sitios</li>
+                                    <li>Decorator @feature_required en todos los módulos</li>
+                                </ul>
+
+                                <h6 class="fw-bold text-info mb-2"><i class="bi bi-arrow-up-circle me-1"></i>Mejoras</h6>
+                                <ul class="mb-0">
+                                    <li>Refactorización completa del sistema de permisos</li>
+                                    <li>Filtrado de datos por grupo_area en 12 modelos operativos</li>
+                                    <li>Notificaciones in-app a ADMINs de otros grupos en mudanzas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- v3.4 -->
+                    <div class="changelog-entry mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge bg-secondary fs-6 me-3">v3.4</span>
+                            <span class="text-muted">Abril 2026</span>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h6 class="fw-bold text-success mb-2"><i class="bi bi-plus-circle me-1"></i>Nuevas funcionalidades</h6>
+                                <ul class="mb-3">
+                                    <li>Módulo Servicios de Internet: contratos ISP, pagos, vencimientos</li>
+                                    <li>HTTPS nativo con Nginx + TLS 1.2/1.3</li>
+                                    <li>Automatizaciones como módulo independiente</li>
+                                    <li>Sistema de licencias Ed25519</li>
+                                    <li>Branding parametrizable (nombre e imagen del producto)</li>
+                                    <li>Centro de Ayuda y Soporte integrado</li>
+                                    <li>Instalador gráfico profesional</li>
+                                </ul>
+
+                                <h6 class="fw-bold text-info mb-2"><i class="bi bi-arrow-up-circle me-1"></i>Mejoras</h6>
+                                <ul class="mb-0">
+                                    <li>Dashboard de servicios con métricas analíticas</li>
+                                    <li>Reportes programados mejorados con más filtros</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- v3.0 - 3.3 -->
+                    <div class="changelog-entry mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge bg-secondary fs-6 me-3">v3.0 – v3.3</span>
+                            <span class="text-muted">Enero – Marzo 2026</span>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h6 class="fw-bold text-success mb-2"><i class="bi bi-plus-circle me-1"></i>Nuevas funcionalidades</h6>
+                                <ul class="mb-3">
+                                    <li>Dashboard personalizable con widgets drag & drop</li>
+                                    <li>Modo oscuro completo</li>
+                                    <li>Búsqueda universal (equipos, sitios, contactos, tramas)</li>
+                                    <li>Módulo Gestión Administrativa: órdenes de compra, licitaciones, proveedores</li>
+                                    <li>Panel de Mudanzas con proyectos y checklist</li>
+                                    <li>Tareas generales con asignación múltiple</li>
+                                    <li>Operaciones masivas en inventario</li>
+                                    <li>Calendario con feriados argentinos</li>
+                                    <li>Notificaciones in-app</li>
+                                    <li>Recuperación de contraseña por email</li>
+                                </ul>
+
+                                <h6 class="fw-bold text-info mb-2"><i class="bi bi-arrow-up-circle me-1"></i>Mejoras</h6>
+                                <ul class="mb-0">
+                                    <li>Seguridad: rate limiting, CSP, logs separados por módulo</li>
+                                    <li>Cache Redis para catálogos y consultas frecuentes</li>
+                                    <li>Performance optimizada para grandes volúmenes de datos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- v2.x -->
+                    <div class="changelog-entry mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge bg-secondary fs-6 me-3">v2.0 – v2.7</span>
+                            <span class="text-muted">2025</span>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <h6 class="fw-bold text-success mb-2"><i class="bi bi-plus-circle me-1"></i>Funcionalidades base</h6>
+                                <ul class="mb-0">
+                                    <li>Inventario completo de equipos de red con filtros avanzados</li>
+                                    <li>Gestión de sitios con geolocalización y mapa interactivo</li>
+                                    <li>Backups automáticos SSH/Telnet con programación y comparación</li>
+                                    <li>Terminal SSH/Telnet web con multipaste, snippets y grilla</li>
+                                    <li>Credenciales encriptadas AES-128 con herencia en cascada</li>
+                                    <li>Sistema de auditoría completo</li>
+                                    <li>Roles y permisos (ROOT, ADMIN, USUARIO, MONITOR)</li>
+                                    <li>Importación masiva desde Excel</li>
+                                    <li>Exportación PDF y Excel con logo corporativo</li>
+                                    <li>Biblioteca de documentación técnica</li>
+                                    <li>Módulo VPN: túneles bidireccionales</li>
+                                    <li>Tareas por sitio con comentarios e imágenes</li>
+                                    <li>Códigos QR para equipos y sitios</li>
+                                    <li>Reportes programados automáticos por email</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+            <p class="mb-1"><img src="img/logo_aiti_icon.svg" alt="" width="18" height="18" class="me-1"><strong><span style="color:#fff;">ai</span><span style="color:#4ECDC4;">T</span><span style="color:#fff;">i</span></strong> — Sistema de Gestión Integral de Infraestructura IT</p>
+            <p class="mb-0 small">© 2026 <span style="color:#fff;">ai</span><span style="color:#4ECDC4;">T</span><span style="color:#fff;">i</span> Software. Todos los derechos reservados. · <a href="index.html" class="text-white-50">Inicio</a> · <a href="novedades.html" class="text-white-50">Novedades</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

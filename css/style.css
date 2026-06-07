@@ -280,3 +280,26 @@ section {
     min-height: 400px;
     border-radius: 12px;
 }
+
+/* ============================================================================
+   Página Novedades / Changelog
+   ============================================================================ */
+
+.changelog-entry .card {
+    border-left: 4px solid var(--primary) !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.changelog-entry .card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.changelog-entry ul {
+    padding-left: 1.2rem;
+}
+
+.changelog-entry ul li {
+    margin-bottom: 0.3rem;
+    color: #4a5568;
+}

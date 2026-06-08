@@ -27,6 +27,7 @@ document.getElementById('downloadForm').addEventListener('submit', function(e) {
     }
     
     // Guardar lead en Google Sheets (backend persistente)
+    var params = new URLSearchParams(window.location.search);
     fetch('https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec', {
         method: 'POST',
         mode: 'no-cors',
@@ -35,7 +36,14 @@ document.getElementById('downloadForm').addEventListener('submit', function(e) {
             nombre: nombre,
             empresa: empresa,
             email: email,
-            equipos: equipos
+            equipos: equipos,
+            pagina: window.location.pathname,
+            utm_source: params.get('utm_source') || '(directo)',
+            utm_medium: params.get('utm_medium') || '',
+            utm_campaign: params.get('utm_campaign') || '',
+            idioma: navigator.language || '',
+            dispositivo: screen.width <= 768 ? 'Mobile' : 'Desktop',
+            fecha_local: new Date().toLocaleString('es-AR')
         })
     }).catch(function() {}); // Silenciar errores (no bloquear la descarga)
     

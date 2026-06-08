@@ -26,16 +26,18 @@ document.getElementById('downloadForm').addEventListener('submit', function(e) {
         return;
     }
     
-    // Guardar lead en localStorage (temporal hasta tener backend)
-    const leads = JSON.parse(localStorage.getItem('aiTi_leads') || '[]');
-    leads.push({
-        nombre: nombre,
-        empresa: empresa,
-        email: email,
-        equipos: equipos,
-        fecha: new Date().toISOString()
-    });
-    localStorage.setItem('aiTi_leads', JSON.stringify(leads));
+    // Guardar lead en Google Sheets (backend persistente)
+    fetch('https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            nombre: nombre,
+            empresa: empresa,
+            email: email,
+            equipos: equipos
+        })
+    }).catch(function() {}); // Silenciar errores (no bloquear la descarga)
     
     // Mostrar éxito y link de descarga
     document.getElementById('downloadForm').style.display = 'none';

@@ -255,12 +255,18 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Smooth scroll for anchor links
+// Smooth scroll for anchor links + close mobile menu
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
+            // Cerrar menu mobile si está abierto
+            const navCollapse = document.getElementById('navbarNav');
+            if (navCollapse && navCollapse.classList.contains('show')) {
+                var bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+                if (bsCollapse) bsCollapse.hide();
+            }
             target.scrollIntoView({ behavior: 'smooth' });
         }
     });

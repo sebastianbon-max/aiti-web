@@ -55,67 +55,45 @@ GoFullPage captura la pagina completa con scroll, generando imagenes muy largas 
 
 ---
 
-## Nombres de archivo por card
-
-Cada card acepta hasta 3 capturas. Si no existe el archivo, muestra "Captura próximamente".
-
-| # | Card | Archivo 1 | Archivo 2 | Archivo 3 |
-|---|------|-----------|-----------|-----------|
-| 1 | Dashboard | `dashboard-1.webp` | `dashboard-2.webp` | `dashboard-3.webp` |
-| 2 | Inventario | `inventario-1.webp` | `inventario-2.webp` | `inventario-3.webp` |
-| 3 | Backups | `backups-1.webp` | `backups-2.webp` | `backups-3.webp` |
-| 4 | Terminal | `terminal-1.webp` | `terminal-2.webp` | `terminal-3.webp` |
-| 5 | Sitios/Mudanzas | `sitios-1.webp` | `sitios-2.webp` | `sitios-3.webp` |
-| 6 | Stock/Asignación | `stock-1.webp` | `stock-2.webp` | `stock-3.webp` |
-| 7 | Comparación Config | `diff-1.webp` | `diff-2.webp` | `diff-3.webp` |
-| 8 | IPAM | `redes-1.webp` | `redes-2.webp` | `redes-3.webp` |
-| 9 | VPN | `vpn-1.webp` | `vpn-2.webp` | `vpn-3.webp` |
-| 10 | Tareas | `tareas-1.webp` | `tareas-2.webp` | `tareas-3.webp` |
-| 11 | Reportes | `reportes-1.webp` | `reportes-2.webp` | `reportes-3.webp` |
-| 12 | Servicios | `servicios-1.webp` | `servicios-2.webp` | `servicios-3.webp` |
-| 13 | Administrativo | `administrativo-1.webp` | `administrativo-2.webp` | `administrativo-3.webp` |
-| 14 | Auditoría | `auditoria-1.webp` | `auditoria-2.webp` | `auditoria-3.webp` |
-| 15 | Credenciales | `credenciales-1.webp` | `credenciales-2.webp` | `credenciales-3.webp` |
-| 16 | Importación | `importacion-1.webp` | `importacion-2.webp` | `importacion-3.webp` |
-| 17 | Email | `email-1.webp` | `email-2.webp` | `email-3.webp` |
-| 18 | Calendario | `calendario-1.webp` | `calendario-2.webp` | `calendario-3.webp` |
-| 19 | Contactos | `contactos-1.webp` | `contactos-2.webp` | `contactos-3.webp` |
-| 20 | Biblioteca | `biblioteca-1.webp` | `biblioteca-2.webp` | `biblioteca-3.webp` |
-| 21 | Multi-Área | `multiarea-1.webp` | `multiarea-2.webp` | `multiarea-3.webp` |
-| 22 | Firmware/Autom. | `firmware-1.webp` | `firmware-2.webp` | `firmware-3.webp` |
-| 23 | Mapa | `mapa-1.webp` | `mapa-2.webp` | `mapa-3.webp` |
-| 24 | Telefonía | `telefonia-1.webp` | `telefonia-2.webp` | `telefonia-3.webp` |
-
 ---
 
 ## Qué capturar en cada card
 
-| # | Card | Captura 1 | Captura 2 | Captura 3 |
-|---|------|-----------|-----------|-----------|
-| 1 | Dashboard | KPIs + gráficos de torta | Widgets (backups, tareas, firmware) | Alertas o sección inferior |
-| 2 | Inventario | Listado con filtros y badges | Detalle de equipo | Selector columnas o accesorios |
-| 3 | Backups | Listado con indicador último backup | Historial de un equipo | Reportes de backup |
-| 4 | Terminal | Grilla 4 terminales | Terminal con snippets/guías | Árbol de equipos por sitio |
-| 5 | Sitios | Listado con badges por tipo | Detalle sitio con equipos | Mudanzas con checklist |
-| 6 | Stock | Filtrado por STOCK | Equipo con persona asignada | Cambio masivo de estado |
-| 7 | Diff | Comparación lado a lado | Selector de versiones | Cambios resaltados |
-| 8 | IPAM | Dashboard KPIs + subredes | Mapa de IPs (colores) | Duplicados o reservadas |
-| 9 | VPN | Mapa con túneles | Listado de túneles | Detalle desde sitio |
-| 10 | Tareas | Listado con estadísticas | Detalle con comentarios | Tareas por sitio |
-| 11 | Reportes | PDF generado | Reportes programados | Exportación Excel |
-| 12 | Servicios | Dashboard KPIs + gráficos | Listado (operativo/vencido/baja) | Detalle con pagos |
-| 13 | Administrativo | OC con equipos | Licitaciones | Licencias software |
-| 14 | Auditoría | Log con filtros | Sesiones activas | Estadísticas |
-| 15 | Credenciales | Listado plantillas | Formulario edición | Herencia cascada |
-| 16 | Importación | Carga archivo Excel | Preview con checkboxes | Resultado importación |
-| 17 | Email | Config SMTP | Reportes programados | Log emails enviados |
-| 18 | Calendario | Vista mensual con eventos | Detalle evento | Vencimientos próximos |
-| 19 | Contactos | Listado con categorías | Detalle contacto | Importación masiva |
-| 20 | Biblioteca | Listado documentos | Firmware versiones | Carga de archivo |
-| 21 | Multi-Área | Panel grupos con desglose | Selector grupo en navbar | Sidebar dinámico |
-| 22 | Firmware | Versiones con recomendadas | Reporte actualización | Comandos programados |
-| 23 | Mapa | Mapa general con pins | Heatmap equipos/backups | Popup sitio |
-| 24 | Telefonía | Dashboard centrales/internos | Listado internos | Detalle central inline |
+Cada card acepta hasta 3 capturas. Si no existe el archivo, muestra "Captura próximamente".
+
+**Tips generales para todas las capturas:**
+- Zoom 90% si el contenido no entra en 1080px
+- Expandir al menos una sección colapsable antes de capturar
+- Que haya datos variados (badges de colores, estados distintos, gráficos con valores)
+- Sidebar visible a la izquierda (muestra que es una app completa)
+- No capturar con modales o dropdowns abiertos (salvo que sea el punto de la captura)
+
+| # | Card | Captura 1 — Qué mostrar | Captura 2 — Qué mostrar | Captura 3 — Qué mostrar | Archivos |
+|---|------|--------------------------|--------------------------|--------------------------|----------|
+| 1 | Dashboard | **Vista inicial:** KPIs arriba (total equipos, sitios, backups, usuarios) + gráfico torta "Equipos por tipo" visible a la derecha. Que se vean números reales, no ceros. | **Widget expandido:** expandir "Resumen de Backups" o "Estado de Firmware" para que se vea la tabla con datos + badges de colores (exitoso/fallido/parcial). | **Tendencias:** scroll abajo, expandir "Tendencias y Evolución" mostrando gráficos de línea con datos de varias semanas. Que se vean las curvas, no líneas planas. | `dashboard-1.webp`, `dashboard-2.webp`, `dashboard-3.webp` |
+| 2 | Inventario | **Listado completo:** tabla con filtros activos visibles arriba (tipo, marca, estado), columnas con hostname, IP, sitio, estado. Que se vean badges de colores (OPERATIVO verde, MANTENIMIENTO naranja). Al menos 8-10 filas visibles. | **Detalle de equipo:** ficha de un equipo con todos los campos llenos: hostname, IP, MAC, modelo, sitio, persona asignada, fecha compra. La sección de "Información de Red" visible. | **Selector columnas o vista con accesorios:** dropdown "Columnas" abierto mostrando checkboxes, o scroll abajo en el detalle mostrando la sección de accesorios asociados con 2-3 ítems. | `inventario-1.webp`, `inventario-2.webp`, `inventario-3.webp` |
+| 3 | Backups | **Listado de equipos con backup:** tabla mostrando columna "Último backup" con fechas y badges (exitoso verde, fallido rojo, nunca gris). Filtros visibles arriba. Que se noten equipos con distintos estados. | **Historial de un equipo:** click en un equipo → vista de todos sus backups con fecha, tamaño, duración. Que se vean al menos 5-6 registros históricos con botón "Comparar". | **Reportes o tarea ejecutándose:** la vista de /backup/reports/ con gráficos de éxito/fallo, o una tarea de backup en progreso mostrando la barra y los equipos procesados. | `backups-1.webp`, `backups-2.webp`, `backups-3.webp` |
+| 4 | Terminal | **Grilla multi-terminal:** 4 terminales abiertos simultáneamente (grilla 2x2). Cada uno conectado a un equipo distinto con texto de consola visible (prompts de Cisco/MikroTik/Linux). Pantalla completa sin sidebar. | **Terminal con panel lateral:** un terminal con el panel de snippets o guías abierto a la derecha. Que se vea el árbol de snippets con carpetas y el terminal activo a la izquierda. | **Árbol de equipos por sitio:** el panel lateral izquierdo con el tree view de sitios → equipos expandido. Click en un equipo y que se vea que se conectó. | `terminal-1.webp`, `terminal-2.webp`, `terminal-3.webp` |
+| 5 | Sitios | **Listado de sitios:** tabla con columnas CD, dirección, provincia, localidad, cantidad de equipos (badge), estado. Filtros por zona/provincia visibles. Al menos 6-8 sitios con datos variados. | **Detalle de sitio:** vista de un sitio con dirección completa, mapa mini, y la tabla de equipos del sitio abajo (5+ equipos). Que se vean las tabs o secciones del detalle. | **Mudanzas:** un proyecto de mudanza con el checklist visible (items tachados y pendientes), equipo origen/destino, archivos adjuntos. Estado "En progreso". | `sitios-1.webp`, `sitios-2.webp`, `sitios-3.webp` |
+| 6 | Stock | **Vista filtrada por estado STOCK:** inventario filtrado con estado="STOCK" mostrando equipos disponibles para asignación. Que se noten los badges "STOCK" en amarillo/naranja. | **Equipo con persona asignada:** detalle de un equipo que tiene campo "Persona asignada" lleno, mostrando nombre completo, área, legajo. Historial de asignaciones si existe. | **Operación masiva:** seleccionar múltiples equipos con checkboxes + el dropdown de "Acciones masivas" abierto mostrando opciones (cambiar estado, asignar sitio, etc.). | `stock-1.webp`, `stock-2.webp`, `stock-3.webp` |
+| 7 | Diff | **Comparación lado a lado:** dos versiones de configuración de un equipo una al lado de la otra con diferencias resaltadas en verde (agregado) y rojo (eliminado). Que se vean líneas de config reales. | **Selector de versiones:** la vista donde se eligen dos fechas/versiones de backup para comparar. Que se vea el equipo seleccionado y las fechas disponibles. | **Detalle de cambios:** zoom en una sección del diff mostrando claramente líneas cambiadas. Idealmente config de red (IP, máscara, ruta) para que sea reconocible. | `diff-1.webp`, `diff-2.webp`, `diff-3.webp` |
+| 8 | IPAM | **Dashboard:** KPIs arriba (total subredes, IPs asignadas, libres, % ocupación) + tabla de subredes con barras de progreso de ocupación en colores (verde/amarillo/rojo). Filtros por provincia. | **Mapa de IPs:** detalle de una subred /24 mostrando la grilla de 254 IPs con colores: verde=asignada, blanco=libre, naranja=reservada, azul=DHCP. Que se vea info al hover. | **Jerarquía o duplicados:** la vista jerárquica con 3 niveles expandidos (10.0.0.0/8 → /16 → /24), o la sección de IPs duplicadas mostrando conflictos detectados. | `redes-1.webp`, `redes-2.webp`, `redes-3.webp` |
+| 9 | VPN | **Mapa con túneles:** el mapa interactivo mostrando sitios como puntos y líneas de conexión VPN entre ellos. Que se vean al menos 3-4 túneles cruzando el mapa con colores por estado. | **Listado de túneles:** tabla con columnas origen, destino, tipo (IPSEC/GRE), estado (activo/inactivo), IP local/remota. Badges de colores por estado. | **Detalle desde sitio:** la sección VPN dentro del detalle de un sitio, mostrando "Túneles de este sitio" con los destinos y el estado de cada uno. | `vpn-1.webp`, `vpn-2.webp`, `vpn-3.webp` |
+| 10 | Tareas | **Listado con estadísticas:** KPIs arriba (pendientes, en progreso, completadas, vencidas) + tabla de tareas con prioridad (badges alta/media/baja), asignados, y fecha límite. Mezcla de estados. | **Detalle con comentarios:** una tarea abierta mostrando descripción, asignados, fecha límite, y la sección de comentarios con 2-3 mensajes de usuarios distintos (con avatar/nombre). | **Tareas por sitio:** la vista de tareas filtrada por un sitio específico, o la sección de tareas dentro del detalle de un sitio, mostrando tareas vinculadas. | `tareas-1.webp`, `tareas-2.webp`, `tareas-3.webp` |
+| 11 | Reportes | **PDF generado:** un PDF abierto en el navegador mostrando encabezado con logo, título, tabla con datos, y gráficos. Que se vea profesional y con formato empresarial. | **Reportes programados:** la configuración de reportes automáticos mostrando frecuencia (diario/semanal/mensual), destinatarios, y próxima ejecución. | **Exportación Excel:** la pantalla de descarga o un Excel abierto mostrando las columnas con datos exportados. O el botón "Exportar" visible en algún listado. | `reportes-1.webp`, `reportes-2.webp`, `reportes-3.webp` |
+| 12 | Servicios | **Dashboard servicios:** KPIs (total servicios, monto mensual, próximos vencimientos) + gráfico de distribución por proveedor o por sitio. Badges de estado (operativo/vencido). | **Listado completo:** tabla con proveedor, sitio, velocidad, monto, estado, vencimiento. Mezcla de estados: operativo (verde), por vencer (naranja), dado de baja (gris). | **Detalle con pagos:** ficha de un servicio mostrando datos del contrato + tabla de pagos mensuales con fecha, monto, comprobante. Que se vea historial de 4-5 pagos. | `servicios-1.webp`, `servicios-2.webp`, `servicios-3.webp` |
+| 13 | Administrativo | **Órdenes de compra:** listado de OC con proveedor, monto, estado (aprobada/pendiente/recibida), fecha, equipos vinculados (badge con cantidad). | **Licitaciones:** listado o detalle de una licitación con expediente, organismo, fecha apertura, estado, documentos adjuntos. | **Licencias de software:** listado de licencias con producto, cantidad, vencimiento, proveedor. Badges de "por vencer" en naranja. | `administrativo-1.webp`, `administrativo-2.webp`, `administrativo-3.webp` |
+| 14 | Auditoría | **Log con filtros:** tabla de auditoría con usuario, acción, modelo afectado, fecha/hora, IP. Filtros por usuario y acción visibles arriba. Al menos 10 registros variados. | **Sesiones activas:** listado de sesiones mostrando usuario, IP, navegador, inicio sesión, última actividad. Que se vean 3-4 sesiones con datos reales. | **Estadísticas:** gráficos o resumen de actividad: acciones por usuario, por módulo, por día. Que se vea que el sistema registra todo. | `auditoria-1.webp`, `auditoria-2.webp`, `auditoria-3.webp` |
+| 15 | Credenciales | **Listado de plantillas:** tabla de credenciales SSH con tipo (SSH/Telnet), alcance (global/por tipo/por marca), usuario, puerto. Sin mostrar contraseñas (que se vean asteriscos). | **Formulario de edición:** formulario abierto mostrando campos: nombre, tipo conexión, usuario, puerto, timeout. Que se vea que es un formulario completo y profesional. | **Herencia cascada:** la vista que muestra la cascada de credenciales: Global → por Tipo → por Marca → por Modelo → por Equipo. Que se entienda la jerarquía. | `credenciales-1.webp`, `credenciales-2.webp`, `credenciales-3.webp` |
+| 16 | Importación | **Carga de archivo:** la pantalla de upload mostrando el selector de archivo Excel, instrucciones de formato, y la plantilla descargable. Antes de importar. | **Preview con checkboxes:** la vista de previsualización post-carga mostrando las filas del Excel con checkboxes para seleccionar cuáles importar. Columnas mapeadas con colores (válido/error). | **Resultado:** la pantalla post-importación mostrando resumen: X creados, Y actualizados, Z errores. Con detalle de errores si los hay. Mensaje de éxito verde. | `importacion-1.webp`, `importacion-2.webp`, `importacion-3.webp` |
+| 17 | Email | **Config SMTP:** formulario de configuración de servidor de correo con campos: servidor, puerto, usuario, seguridad (TLS/SSL). Que se vea profesional, no técnico. | **Reportes programados:** configuración de envíos automáticos: tipo de reporte, frecuencia, destinatarios (multi-select con emails). Próxima ejecución visible. | **Log de emails:** tabla de correos enviados con fecha, destinatario, asunto, estado (enviado/error). Badge verde "Enviado" en la mayoría. | `email-1.webp`, `email-2.webp`, `email-3.webp` |
+| 18 | Calendario | **Vista mensual:** calendario completo con eventos de colores en distintos días. Que se vean al menos 5-6 eventos distribuidos en el mes. Leyenda de colores visible. | **Detalle de evento:** modal o vista de un evento con título, fecha, hora, descripción, categoría, recordatorio. Bien formateado. | **Vencimientos próximos:** panel lateral o listado mostrando vencimientos de licencias/contratos/certificados ordenados por fecha. Badges "próximo" en naranja. | `calendario-1.webp`, `calendario-2.webp`, `calendario-3.webp` |
+| 19 | Contactos | **Listado con categorías:** tabla de contactos con nombre, organización, teléfono, email, categoría (badge coloreado: Proveedor, ISP, Soporte, etc.). Filtro por categoría visible. | **Detalle contacto:** ficha completa con todos los campos: nombre, cargo, organización, teléfonos, emails, notas, sitios vinculados. Foto o ícono de avatar. | **Importación masiva:** la pantalla de importación de contactos desde Excel con preview de datos y opción de marcar como "agenda institucional" (global). | `contactos-1.webp`, `contactos-2.webp`, `contactos-3.webp` |
+| 20 | Biblioteca | **Listado documentos:** tabla con nombre, categoría (Manual, Procedimiento, Diagrama), equipo vinculado, fecha carga, usuario. Íconos por tipo de archivo (PDF, DOC, etc.). | **Firmware/versiones:** listado de versiones de firmware por modelo con "recomendada" marcada, fecha release, notas. Badge "desactualizado" en rojo para equipos viejos. | **Carga de archivo:** formulario de upload con campos: título, categoría, equipo vinculado, archivo. Drag & drop zone visible. | `biblioteca-1.webp`, `biblioteca-2.webp`, `biblioteca-3.webp` |
+| 21 | Multi-Área | **Panel de grupos:** listado de grupos de área con nombre, miembros (count), features habilitados (badges), equipos/sitios. Vista de administración ROOT. | **Selector de grupo en navbar:** la barra superior mostrando el dropdown de "Grupo activo" abierto con las opciones: "Todos", "Redes", "Telefonía", "Soporte". | **Sidebar dinámico:** dos capturas comparadas (o una mostrando): sidebar con módulos específicos de un grupo. Que se note que cambia según el grupo seleccionado. | `multiarea-1.webp`, `multiarea-2.webp`, `multiarea-3.webp` |
+| 22 | Firmware | **Versiones con recomendadas:** listado de modelos con columna "versión actual", "versión recomendada", cantidad de equipos, % actualizados. Badge verde/rojo. | **Reporte de actualización:** vista que muestra qué equipos necesitan update con modelo, versión actual, versión target, sitio. Botón "Generar plan de actualización". | **Comandos programados:** listado de automatizaciones/comandos configurados con frecuencia, último resultado, próxima ejecución. | `firmware-1.webp`, `firmware-2.webp`, `firmware-3.webp` |
+| 23 | Mapa | **Mapa general:** mapa con pins de sitios distribuidos geográficamente. Zoom mostrando una provincia/región con 4-5 pins visibles. Que se vea el basemap y los markers. | **Heatmap:** el mapa con overlay de calor mostrando densidad de equipos o backups. Colores intensos en zonas con más equipos. Leyenda visible. | **Popup de sitio:** click en un pin mostrando el popup con nombre del sitio, dirección, cantidad de equipos, último backup. Link "Ver detalle". | `mapa-1.webp`, `mapa-2.webp`, `mapa-3.webp` |
+| 24 | Telefonía | **Dashboard:** KPIs (centrales, tramas, internos) + tabla de centrales con modelo, sitio, tramas activas, internos count. Datos variados. | **Listado internos:** tabla de internos con extensión, nombre, sitio destino, tipo (físico/SIP/softphone), estado. Filtros activos. Al menos 10 filas. | **Detalle central con edición inline:** la ficha de una central mostrando las tramas e internos editables directamente (inline). Que se vean los campos editables. | `telefonia-1.webp`, `telefonia-2.webp`, `telefonia-3.webp` |
 
 ---
 

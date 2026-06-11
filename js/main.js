@@ -13,7 +13,9 @@ window.addEventListener('scroll', function() {
 });
 
 // Download form handling
-document.getElementById('downloadForm').addEventListener('submit', function(e) {
+var dlForm = document.getElementById('downloadForm');
+if (dlForm) {
+dlForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
     const nombre = document.getElementById('dl_nombre').value.trim();
@@ -70,6 +72,7 @@ document.getElementById('downloadForm').addEventListener('submit', function(e) {
     
     console.log('Lead registrado:', { nombre, empresa, email, equipos });
 });
+}
 
 // Feature screenshots modal
 var featureData = {
@@ -186,7 +189,7 @@ var featureData = {
     'redes': {
         title: 'Direccionamiento IP (IPAM)',
         images: ['img/features/redes-1.webp', 'img/features/redes-2.webp', 'img/features/redes-3.webp'],
-        description: 'Mapa visual de IPs por subred, deteccion automatica de redes, duplicados, ocupacion, alertas y reserva de IPs.'
+        description: 'Mapa visual de IPs por subred, vista jerarquica del plan de direccionamiento completo, deteccion automatica de redes, rangos DHCP, duplicados, notas por IP, ocupacion y alertas. Visualice la estructura de subredes en arbol.'
     },
     'telefonia': {
         title: 'Telefonia',
@@ -207,33 +210,35 @@ function showFeature(key) {
     
     document.getElementById('featureModalTitle').textContent = feature.title;
     
-    // Guardar im�genes en el estado del carrusel
+    // Guardar imagenes en el estado del carrusel
     featureCarousel.images = feature.images;
     featureCarousel.current = 0;
     
     var body = document.getElementById('featureModalBody');
-    var html = '<p class="text-muted mb-3">' + feature.description + '</p>';
+    var html = '';
     
-    // Contenedor de imagen �nica con navegaci�n
+    // Contenedor de imagen con navegacion
     html += '<div class="position-relative">';
     
-    // Bot�n anterior
-    html += '<button type="button" class="btn btn-dark btn-sm position-absolute top-50 start-0 translate-middle-y ms-2 rounded-circle" id="featurePrev" onclick="featureNav(-1)" style="z-index:10; width:40px; height:40px; opacity:0.7;">';
-    html += '<i class="bi bi-chevron-left"></i></button>';
+    // Boton anterior
+    html += '<button type="button" class="btn btn-dark btn-sm position-absolute top-50 start-0 translate-middle-y ms-2 rounded-circle" id="featurePrev" onclick="featureNav(-1)" style="z-index:10; width:44px; height:44px; opacity:0.8;">';
+    html += '<i class="bi bi-chevron-left fs-5"></i></button>';
     
-    // Imagen principal
+    // Imagen principal (click abre en nueva pestana a tamano real)
     html += '<div class="text-center" id="featureImageContainer">';
-    html += '<img src="' + feature.images[0] + '" class="img-fluid rounded shadow" id="featureCurrentImg" alt="' + feature.title + '" style="max-height: 70vh; cursor: pointer;" onclick="featureNav(1)" onerror="this.outerHTML=\'<div class=\\\'text-center text-muted py-5 border rounded\\\'><i class=\\\'bi bi-image fs-1 d-block mb-2\\\'></i><small>Captura pr�ximamente</small></div>\'">';
+    html += '<a href="' + feature.images[0] + '" target="_blank" title="Click para ver en tamano real">';
+    html += '<img src="' + feature.images[0] + '" class="img-fluid rounded shadow-lg" id="featureCurrentImg" alt="' + feature.title + '" style="max-height: 80vh; width: 100%; object-fit: contain; cursor: zoom-in;" onerror="this.parentElement.outerHTML=\'<div class=\\\'text-center text-muted py-5 border rounded\\\'><i class=\\\'bi bi-image fs-1 d-block mb-2\\\'></i><small>Captura proximamente</small></div>\'">';
+    html += '</a></div>';
+    
+    // Boton siguiente
+    html += '<button type="button" class="btn btn-dark btn-sm position-absolute top-50 end-0 translate-middle-y me-2 rounded-circle" id="featureNext" onclick="featureNav(1)" style="z-index:10; width:44px; height:44px; opacity:0.8;">';
+    html += '<i class="bi bi-chevron-right fs-5"></i></button>';
+    
     html += '</div>';
     
-    // Bot�n siguiente
-    html += '<button type="button" class="btn btn-dark btn-sm position-absolute top-50 end-0 translate-middle-y me-2 rounded-circle" id="featureNext" onclick="featureNav(1)" style="z-index:10; width:40px; height:40px; opacity:0.7;">';
-    html += '<i class="bi bi-chevron-right"></i></button>';
-    
-    html += '</div>';
-    
-    // Indicador de posici�n
-    html += '<div class="text-center mt-2">';
+    // Indicador de posicion + hint de zoom
+    html += '<div class="d-flex justify-content-between align-items-center mt-2 px-1">';
+    html += '<small class="text-muted"><i class="bi bi-zoom-in me-1"></i>Click en la imagen para ver a tamano real</small>';
     html += '<small class="text-muted" id="featureCounter">Imagen 1 de ' + feature.images.length + '</small>';
     html += '</div>';
     
@@ -254,9 +259,14 @@ function featureNav(direction) {
     var img = document.getElementById('featureCurrentImg');
     if (img) {
         img.style.opacity = '0.3';
+        var newSrc = featureCarousel.images[featureCarousel.current];
         setTimeout(function() {
-            img.src = featureCarousel.images[featureCarousel.current];
+            img.src = newSrc;
             img.style.opacity = '1';
+            // Actualizar link del <a> padre
+            if (img.parentElement && img.parentElement.tagName === 'A') {
+                img.parentElement.href = newSrc;
+            }
         }, 150);
     }
     

@@ -217,3 +217,80 @@ Agregar en `index.html` debajo del hero o en una sección propia:
 ```
 
 Reemplazar `VIDEO_ID` con el ID del video de YouTube.
+
+
+---
+
+## Video de Instalación (1-2 minutos)
+
+Video corto que muestre lo fácil que es instalar el sistema. Se muestra en la web o se envía a clientes potenciales.
+
+---
+
+### Preparación
+
+1. **VM limpia** con Windows Server o Windows 10/11 (sin aiTi instalado)
+2. **Resolución 1920x1080** en la VM
+3. **Escritorio limpio** — sin iconos innecesarios, wallpaper por defecto de Windows
+4. **Tener el instalador** `aiTi_Setup_vX.X.X.exe` en el Escritorio de la VM
+5. **OBS Studio** corriendo en la máquina HOST (captura la ventana de la VM)
+
+---
+
+### Guión paso a paso
+
+| Paso | Qué mostrar | Duración |
+|------|-------------|----------|
+| 1 | Escritorio limpio con el instalador visible | 3 seg |
+| 2 | Doble click en el instalador → se abre el wizard | 3 seg |
+| 3 | Pantalla de bienvenida → click "Siguiente" | 3 seg |
+| 4 | Selección de carpeta (dejar por defecto) → "Siguiente" | 3 seg |
+| 5 | Opciones de instalación (servicios, shortcuts) → "Siguiente" | 5 seg |
+| 6 | Progreso de instalación (barra avanzando) | 10-15 seg |
+| 7 | Pantalla "Instalación completada" → "Finalizar" | 3 seg |
+| 8 | El navegador se abre automáticamente con la pantalla de login | 5 seg |
+| 9 | Login con usuario admin → Dashboard con datos | 10 seg |
+
+**Total:** ~60-90 segundos
+
+---
+
+### Tips específicos para este video
+
+1. **Empezar grabando el escritorio** con el mouse quieto 2-3 segundos (da aire al inicio)
+2. **Doble click visible y pausado** — que se vea claramente que hacés doble click en el .exe
+3. **No acelerar** la barra de progreso — mostrarla real (si es rápida, mejor)
+4. **Si pide UAC** (Control de cuentas de usuario) → mostrar que se acepta (es normal)
+5. **Al final mostrar el login funcionando** — eso cierra el ciclo "descargo → instalo → uso"
+6. **No narrar** — agregar subtítulos después si hace falta
+
+---
+
+### Captura con OBS (desde el HOST)
+
+1. En OBS, agregar source "Window Capture" → seleccionar la ventana de la VM (VMware/VirtualBox/Hyper-V)
+2. Ajustar el crop para que solo se vea el contenido de la VM (sin bordes del virtualizador)
+3. Presionar "Start Recording"
+4. Hacer todo el flujo de instalación dentro de la VM
+5. Presionar "Stop Recording"
+6. El video queda en la carpeta de OBS (por defecto `C:\Users\{usuario}\Videos`)
+
+**Alternativa:** Si la VM tiene acceso a OBS, podés grabar directamente dentro de la VM con Xbox Game Bar (Win+G → Start Recording).
+
+---
+
+### Post-producción
+
+1. Cortar los primeros/últimos segundos muertos
+2. (Opcional) Agregar texto superpuesto al inicio: "Instalación en menos de 2 minutos"
+3. (Opcional) Acelerar x2 la parte de la barra de progreso si tarda mucho
+4. Exportar a MP4, 1080p
+
+---
+
+### Dónde usar este video
+
+- En la sección "Instalación" de la web (embed YouTube)
+- Como adjunto en emails comerciales
+- En la página de descarga (junto al formulario de trial)
+- En presentaciones a clientes

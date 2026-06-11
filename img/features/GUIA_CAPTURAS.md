@@ -122,3 +122,98 @@ Cada card acepta hasta 3 capturas. Si no existe el archivo, muestra "Captura pr�
 ## Total: hasta 72 capturas (24 cards × 3)
 
 Con 2 por card ya queda comercial. La tercera es bonus.
+
+
+---
+
+## Video Demo (3-5 minutos)
+
+### Objetivo
+
+Un screencast corto que muestre el sistema en funcionamiento. Más efectivo que 72 capturas para el visitante que quiere ver el producto "vivo" antes de descargarlo.
+
+---
+
+### Herramienta recomendada: OBS Studio (gratuito)
+
+1. Descargar de [obsproject.com](https://obsproject.com)
+2. Instalar y abrir
+3. Configurar:
+   - **Sources** → agregar "Display Capture" o "Window Capture" (solo Chrome)
+   - **Settings → Output**: formato MP4, encoder x264, bitrate 2500-4000 kbps
+   - **Settings → Video**: resolución 1920x1080, 30 FPS
+   - **Settings → Audio**: desactivar micrófono si no vas a narrar
+
+**Alternativa rápida sin instalar nada:** Xbox Game Bar (Win+G) → captura de pantalla integrada en Windows 10/11.
+
+---
+
+### Qué grabar (guión sugerido, 3-5 min)
+
+| Tiempo | Qué mostrar |
+|--------|-------------|
+| 0:00-0:20 | Login → Dashboard con KPIs y gráficos |
+| 0:20-0:50 | Inventario: filtros, columnas, detalle de equipo |
+| 0:50-1:20 | Sitios: listado → detalle con equipos → mapa |
+| 1:20-1:50 | IPAM: dashboard → detalle subred → jerarquía |
+| 1:50-2:20 | Backup: listado → ejecutar → historial |
+| 2:20-2:50 | Terminal SSH: conexión, snippets, grilla |
+| 2:50-3:20 | Servicios + Telefonía (rápido) |
+| 3:20-3:50 | Tareas, Calendario, Contactos (rápido) |
+| 3:50-4:20 | Admin: OC, licencias, auditoría |
+| 4:20-4:50 | Configuración: grupos de área, features, reporte ejecutivo |
+
+---
+
+### Tips para grabar
+
+1. **Modo claro** (dark mode OFF)
+2. **Datos de demo cargados** (`python manage.py load_demo_data --reset`)
+3. **Movimientos lentos** — el espectador necesita tiempo para leer
+4. **No narrar** en la primera versión (agregar subtítulos o texto superpuesto después)
+5. **Navegador limpio** — sin extensiones, sin favoritos, sin notificaciones
+6. **Pantalla completa** (F11) — sin barra de Chrome
+7. **Mouse visible** — para que se vea dónde se hace click
+8. **Cortar errores** — si te equivocás, seguí y editá después
+
+---
+
+### Post-producción (opcional)
+
+**Herramienta:** [Clipchamp](https://clipchamp.com) (gratis, incluido en Windows 11) o [Kdenlive](https://kdenlive.org) (gratis, más avanzado)
+
+1. Cortar partes lentas o errores
+2. Agregar texto/títulos en las transiciones (ej: "Inventario de Equipos", "IPAM")
+3. Agregar música de fondo suave (buscar "royalty free background music" en YouTube Audio Library)
+4. Exportar a MP4, 1080p, bitrate ~5000 kbps
+
+---
+
+### Dónde publicar
+
+| Plataforma | Uso |
+|------------|-----|
+| YouTube (unlisted o público) | Embed en la web con `<iframe>` |
+| GitHub (como asset en release) | Link directo al MP4 |
+| Directamente en el sitio | Archivo MP4 en `aiti-web/video/` (pesado, no recomendado) |
+
+**Recomendado:** Subir a YouTube como "No listado" y embeber en la web. Peso 0 para el hosting, reproduce bien en móvil, y no indexa en búsquedas de YouTube.
+
+---
+
+### Embed en la web (cuando esté listo)
+
+Agregar en `index.html` debajo del hero o en una sección propia:
+
+```html
+<section class="py-5 bg-light text-center">
+    <div class="container">
+        <h2 class="fw-bold mb-4">Véalo en acción</h2>
+        <div class="ratio ratio-16x9 mx-auto" style="max-width: 900px;">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+```
+
+Reemplazar `VIDEO_ID` con el ID del video de YouTube.

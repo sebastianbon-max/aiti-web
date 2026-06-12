@@ -214,7 +214,7 @@ var featureData = {
         title: 'Direccionamiento IP (IPAM)',
         prefix: 'img/features/redes-',
         video: '',
-        description: 'Mapa visual de IPs por subred, vista jerarquica del plan de direccionamiento completo, deteccion automatica de redes, rangos DHCP, duplicados, notas por IP, ocupacion y alertas. Visualice la estructura de subredes en arbol.'
+        description: 'Mapa visual de IPs por subred, historial completo de ciclo de vida (asignada/liberada/reasignada), deteccion de conflictos por ping, escaneo de red, vista jerarquica, rangos DHCP, duplicados, notas por IP y alertas de ocupacion.'
     },
     'telefonia': {
         title: 'Telefonia',

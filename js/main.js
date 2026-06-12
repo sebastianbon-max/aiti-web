@@ -74,127 +74,152 @@ dlForm.addEventListener('submit', function(e) {
 });
 }
 
-// Feature screenshots modal — hasta 10 imágenes por card
+// Feature screenshots modal — hasta 10 imágenes por card + video opcional
 // El sistema genera URLs del 1 al 10 y detecta cuáles existen
+// Campo 'video' es opcional: ID de YouTube (ej: 'dQw4w9WgXcQ')
 var featureData = {
     'dashboard': {
         title: 'Dashboard Inteligente',
         prefix: 'img/features/dashboard-',
+        video: '',
         description: 'Panel con KPIs en tiempo real, graficos de distribucion por tipo/marca/estado, alertas y widgets personalizables.'
     },
     'inventario': {
         title: 'Inventario de Equipos',
         prefix: 'img/features/inventario-',
+        video: '',
         description: 'Listado con filtros avanzados, columnas configurables, busqueda universal, exportacion PDF/Excel y codigos QR.'
     },
     'backups': {
         title: 'Backups Automaticos',
         prefix: 'img/features/backups-',
+        video: '',
         description: 'Respaldo automatico via SSH/Telnet, mapa de calor de backups, historial y comparacion visual de cambios.'
     },
     'terminal': {
         title: 'Terminal SSH/Telnet',
         prefix: 'img/features/terminal-',
+        video: '',
         description: 'Conexion directa desde el navegador, multiples pestanas, multipaste, snippets y vista grilla.'
     },
     'sitios': {
         title: 'Gestion de Sitios y Mudanzas',
         prefix: 'img/features/sitios-',
+        video: '',
         description: 'Organizacion por ubicacion, mapa geografico, mudanzas masivas con checklist y archivo historico.'
     },
     'stock': {
         title: 'Control de Stock y Asignacion',
         prefix: 'img/features/stock-',
+        video: '',
         description: 'Estados de equipo, asignacion a personas responsables con trazabilidad completa.'
     },
     'diff': {
         title: 'Comparacion de Configuraciones',
         prefix: 'img/features/diff-',
+        video: '',
         description: 'Diff visual lado a lado entre versiones de backup. Detecte cambios al instante.'
     },
     'vpn': {
         title: 'VPN y Conectividad',
         prefix: 'img/features/vpn-',
+        video: '',
         description: 'Tuneles VPN bidireccionales, vista de mapa con conexiones entre sitios.'
     },
     'tareas': {
         title: 'Tareas y Seguimiento',
         prefix: 'img/features/tareas-',
+        video: '',
         description: 'Tareas generales y por sitio, asignacion, prioridades, comentarios y archivos adjuntos.'
     },
     'reportes': {
         title: 'Estadisticas y Reportes',
         prefix: 'img/features/reportes-',
+        video: '',
         description: 'Reportes PDF/Excel, reportes programados por email, estadisticas de backups e inventario.'
     },
     'servicios': {
         title: 'Servicios de Internet',
         prefix: 'img/features/servicios-',
+        video: '',
         description: 'Contratos ISP, proveedores, velocidades, pagos, vencimientos y dashboard analitico.'
     },
     'administrativo': {
         title: 'Gestion Administrativa',
         prefix: 'img/features/administrativo-',
+        video: '',
         description: 'Ordenes de compra, licitaciones, proveedores y licencias de software.'
     },
     'auditoria': {
         title: 'Auditoria y Seguridad',
         prefix: 'img/features/auditoria-',
+        video: '',
         description: 'Registro completo de acciones, roles y permisos, bloqueo por intentos fallidos.'
     },
     'credenciales': {
         title: 'Credenciales Seguras',
         prefix: 'img/features/credenciales-',
+        video: '',
         description: 'Credenciales encriptadas con herencia en cascada Tipo, Marca, Modelo y Equipo.'
     },
     'importacion': {
         title: 'Importacion Masiva',
         prefix: 'img/features/importacion-',
+        video: '',
         description: 'Importacion desde Excel con vista previa, validacion por fila y reporte de errores detallado.'
     },
     'email': {
         title: 'Notificaciones por Email',
         prefix: 'img/features/email-',
+        video: '',
         description: 'Alertas automaticas de backups, vencimientos y reportes programados.'
     },
     'calendario': {
         title: 'Calendario',
         prefix: 'img/features/calendario-',
+        video: '',
         description: 'Vista mensual de eventos, vencimientos de licencias, certificados y contratos.'
     },
     'biblioteca': {
         title: 'Biblioteca Tecnica',
         prefix: 'img/features/biblioteca-',
+        video: '',
         description: 'Repositorio de documentacion tecnica, manuales y firmwares por equipo/modelo.'
     },
     'contactos': {
         title: 'Agenda de Contactos',
         prefix: 'img/features/contactos-',
+        video: '',
         description: 'Agenda profesional con categorias, multiples telefonos, emails, sitios asociados, importacion masiva y busqueda avanzada.'
     },
     'multiarea': {
         title: 'Multi-Area (Grupos)',
         prefix: 'img/features/multiarea-',
+        video: '',
         description: 'Aislamiento por areas organizativas. Cada grupo opera con sus propios equipos, usuarios, modulos habilitados y datos independientes.'
     },
     'firmware': {
         title: 'Firmware y Automatizaciones',
         prefix: 'img/features/firmware-',
+        video: '',
         description: 'Control de versiones de firmware por modelo, reporte de equipos actualizados/desactualizados, ejecucion masiva de comandos programados.'
     },
     'mapa': {
         title: 'Mapa Interactivo',
         prefix: 'img/features/mapa-',
+        video: '',
         description: 'Visualizacion geografica de sitios con mapa de calor de equipos, backups y conectividad. Geocodificacion automatica.'
     },
     'redes': {
         title: 'Direccionamiento IP (IPAM)',
         prefix: 'img/features/redes-',
+        video: '',
         description: 'Mapa visual de IPs por subred, vista jerarquica del plan de direccionamiento completo, deteccion automatica de redes, rangos DHCP, duplicados, notas por IP, ocupacion y alertas. Visualice la estructura de subredes en arbol.'
     },
     'telefonia': {
         title: 'Telefonia',
         prefix: 'img/features/telefonia-',
+        video: '',
         description: 'Gestion de centrales telefonicas, tramas (E1, SIP, analogica) e internos. Asignacion por persona y ubicacion.'
     }
 };
@@ -219,7 +244,7 @@ function showFeature(key) {
     
     // Mostrar loading mientras detecta imágenes
     var body = document.getElementById('featureModalBody');
-    body.innerHTML = '<div class="text-center py-5"><div class="spinner-border text-primary" role="status"></div><p class="mt-2 text-muted">Cargando capturas...</p></div>';
+    body.innerHTML = '<div class="text-center py-5"><div class="spinner-border text-light" role="status"></div><p class="mt-2 text-light opacity-75">Cargando capturas...</p></div>';
     
     // Verificar cuáles existen con HEAD requests paralelos
     var checks = possibleImages.map(function(src) {
@@ -234,13 +259,15 @@ function showFeature(key) {
     Promise.all(checks).then(function(results) {
         var validImages = results.filter(function(src) { return src !== null; });
         
-        if (validImages.length === 0) {
-            body.innerHTML = '<div class="text-center text-muted py-5 border rounded"><i class="bi bi-image fs-1 d-block mb-2"></i><p>Capturas proximamente</p><small>' + feature.description + '</small></div>';
+        if (validImages.length === 0 && !feature.video) {
+            body.innerHTML = '<div class="text-center py-5 border rounded" style="border-color: rgba(255,255,255,0.1) !important;"><i class="bi bi-image fs-1 d-block mb-2 text-light opacity-50"></i><p class="text-light opacity-75">Capturas proximamente</p><small class="text-light opacity-50">' + feature.description + '</small></div>';
             return;
         }
         
         featureCarousel.images = validImages;
         featureCarousel.current = 0;
+        featureCarousel.video = feature.video || '';
+        featureCarousel.showingVideo = false;
         _renderFeatureCarousel(feature.title);
     });
 }
@@ -248,40 +275,76 @@ function showFeature(key) {
 function _renderFeatureCarousel(title) {
     var body = document.getElementById('featureModalBody');
     var images = featureCarousel.images;
+    var hasVideo = !!featureCarousel.video;
+    var totalItems = images.length + (hasVideo ? 1 : 0);
     var html = '';
     
-    // Contenedor de imagen con navegacion
-    html += '<div class="position-relative">';
+    // Contenedor principal (imagen o video)
+    html += '<div class="position-relative" id="featureMainContainer">';
     
     // Boton anterior
-    html += '<button type="button" class="btn btn-dark btn-sm position-absolute top-50 start-0 translate-middle-y ms-2 rounded-circle" id="featurePrev" onclick="featureNav(-1)" style="z-index:10; width:44px; height:44px; opacity:0.8;">';
-    html += '<i class="bi bi-chevron-left fs-5"></i></button>';
+    if (totalItems > 1) {
+        html += '<button type="button" class="btn btn-dark btn-sm position-absolute top-50 start-0 translate-middle-y ms-2 rounded-circle" id="featurePrev" onclick="featureNav(-1)" style="z-index:10; width:44px; height:44px; opacity:0.8;">';
+        html += '<i class="bi bi-chevron-left fs-5"></i></button>';
+    }
     
     // Imagen principal (click abre lightbox fullscreen)
     html += '<div class="text-center" id="featureImageContainer">';
-    html += '<img src="' + images[0] + '" class="img-fluid rounded shadow-lg" id="featureCurrentImg" alt="' + title + '" style="max-height: 80vh; width: 100%; object-fit: contain; cursor: zoom-in; transition: opacity 0.15s;" onclick="openLightbox(this.src)">';
+    if (images.length > 0) {
+        html += '<img src="' + images[0] + '" class="img-fluid rounded shadow-lg" id="featureCurrentImg" alt="' + title + '" style="max-height: 80vh; width: 100%; object-fit: contain; cursor: zoom-in; transition: opacity 0.15s;" onclick="openLightbox(this.src)">';
+    } else if (hasVideo) {
+        // Solo video, sin imágenes
+        html += '<div class="ratio ratio-16x9 rounded shadow-lg overflow-hidden" id="featureVideoPlayer">'
+            + '<iframe src="https://www.youtube.com/embed/' + featureCarousel.video + '?rel=0&modestbranding=1" allowfullscreen style="border:none;"></iframe>'
+            + '</div>';
+        featureCarousel.showingVideo = true;
+    }
     html += '</div>';
+    
+    // Video container (oculto inicialmente si hay imágenes)
+    if (hasVideo && images.length > 0) {
+        html += '<div class="text-center" id="featureVideoContainer" style="display:none;">';
+        html += '<div class="ratio ratio-16x9 rounded shadow-lg overflow-hidden">'
+            + '<iframe id="featureVideoIframe" src="" allowfullscreen style="border:none;"></iframe>'
+            + '</div>';
+        html += '</div>';
+    }
     
     // Boton siguiente
-    html += '<button type="button" class="btn btn-dark btn-sm position-absolute top-50 end-0 translate-middle-y me-2 rounded-circle" id="featureNext" onclick="featureNav(1)" style="z-index:10; width:44px; height:44px; opacity:0.8;">';
-    html += '<i class="bi bi-chevron-right fs-5"></i></button>';
+    if (totalItems > 1) {
+        html += '<button type="button" class="btn btn-dark btn-sm position-absolute top-50 end-0 translate-middle-y me-2 rounded-circle" id="featureNext" onclick="featureNav(1)" style="z-index:10; width:44px; height:44px; opacity:0.8;">';
+        html += '<i class="bi bi-chevron-right fs-5"></i></button>';
+    }
     
     html += '</div>';
     
-    // Indicador de posicion + hint de zoom
+    // Indicador de posicion + hint
     html += '<div class="d-flex justify-content-between align-items-center mt-2 px-1">';
-    html += '<small class="text-muted"><i class="bi bi-zoom-in me-1"></i>Click en la imagen para ampliar</small>';
-    html += '<small class="text-muted" id="featureCounter">Imagen 1 de ' + images.length + '</small>';
+    if (!featureCarousel.showingVideo) {
+        html += '<small class="text-light opacity-75" id="featureHint"><i class="bi bi-zoom-in me-1"></i>Click en la imagen para ampliar</small>';
+    } else {
+        html += '<small class="text-light opacity-75" id="featureHint"><i class="bi bi-play-circle me-1"></i>Video demostrativo</small>';
+    }
+    html += '<small class="text-light opacity-75" id="featureCounter">' + (images.length > 0 ? 'Imagen 1 de ' + images.length : 'Video') + (hasVideo ? ' + video' : '') + '</small>';
     html += '</div>';
     
-    // Thumbnails si hay más de 1 imagen
-    if (images.length > 1) {
+    // Thumbnails (imágenes + video al final)
+    if (totalItems > 1) {
         html += '<div class="d-flex gap-2 mt-2 overflow-auto pb-1" id="featureThumbs" style="scrollbar-width: thin;">';
         for (var i = 0; i < images.length; i++) {
             var activeClass = i === 0 ? 'border-primary opacity-100' : 'border-secondary opacity-50';
             html += '<img src="' + images[i] + '" class="rounded border-2 border feature-thumb ' + activeClass + '" '
                 + 'style="width:80px; height:45px; object-fit:cover; cursor:pointer; transition: opacity 0.2s, border-color 0.2s;" '
                 + 'onclick="featureGoTo(' + i + ')">';
+        }
+        // Thumbnail del video al final
+        if (hasVideo) {
+            var videoThumbClass = (images.length === 0) ? 'border-primary opacity-100' : 'border-secondary opacity-50';
+            html += '<div class="rounded border-2 border feature-thumb feature-thumb-video ' + videoThumbClass + '" '
+                + 'style="width:80px; height:45px; cursor:pointer; transition: opacity 0.2s, border-color 0.2s; background: linear-gradient(135deg, #1a1a2e, #16213e); display:flex; align-items:center; justify-content:center; flex-shrink:0;" '
+                + 'onclick="featureShowVideo()">'
+                + '<i class="bi bi-play-fill text-white" style="font-size:1.5rem;"></i>'
+                + '</div>';
         }
         html += '</div>';
     }
@@ -292,20 +355,96 @@ function _renderFeatureCarousel(title) {
 
 function featureNav(direction) {
     var total = featureCarousel.images.length;
-    if (total <= 1) return;
+    var hasVideo = !!featureCarousel.video;
+    var totalItems = total + (hasVideo ? 1 : 0);
+    if (totalItems <= 1) return;
+    
+    // Si estamos en video y vamos atrás, ir a última imagen
+    if (featureCarousel.showingVideo && direction === -1) {
+        featureCarousel.showingVideo = false;
+        featureCarousel.current = total - 1;
+        _switchToImage();
+        return;
+    }
+    
+    // Si estamos en última imagen y vamos adelante, ir a video
+    if (!featureCarousel.showingVideo && direction === 1 && featureCarousel.current === total - 1 && hasVideo) {
+        featureShowVideo();
+        return;
+    }
+    
+    // Navegación normal entre imágenes
+    if (featureCarousel.showingVideo) return;
     
     featureCarousel.current += direction;
-    
-    // Wrap around
     if (featureCarousel.current >= total) featureCarousel.current = 0;
-    if (featureCarousel.current < 0) featureCarousel.current = total - 1;
+    if (featureCarousel.current < 0) {
+        if (hasVideo) {
+            featureShowVideo();
+            return;
+        }
+        featureCarousel.current = total - 1;
+    }
     
     _updateFeatureImage();
 }
 
 function featureGoTo(index) {
+    if (featureCarousel.showingVideo) {
+        featureCarousel.showingVideo = false;
+        _switchToImage();
+    }
     featureCarousel.current = index;
     _updateFeatureImage();
+}
+
+function featureShowVideo() {
+    if (!featureCarousel.video) return;
+    featureCarousel.showingVideo = true;
+    
+    var imgContainer = document.getElementById('featureImageContainer');
+    var videoContainer = document.getElementById('featureVideoContainer');
+    var iframe = document.getElementById('featureVideoIframe');
+    
+    if (imgContainer) imgContainer.style.display = 'none';
+    if (videoContainer) {
+        videoContainer.style.display = '';
+        if (iframe) iframe.src = 'https://www.youtube.com/embed/' + featureCarousel.video + '?rel=0&modestbranding=1&autoplay=1';
+    }
+    
+    // Actualizar hint
+    var hint = document.getElementById('featureHint');
+    if (hint) hint.innerHTML = '<i class="bi bi-play-circle me-1"></i>Video demostrativo';
+    
+    // Actualizar counter
+    var counter = document.getElementById('featureCounter');
+    if (counter) counter.textContent = 'Video';
+    
+    // Actualizar thumbnails
+    var thumbs = document.querySelectorAll('.feature-thumb');
+    thumbs.forEach(function(thumb) {
+        thumb.classList.remove('border-primary', 'opacity-100');
+        thumb.classList.add('border-secondary', 'opacity-50');
+    });
+    var videoThumb = document.querySelector('.feature-thumb-video');
+    if (videoThumb) {
+        videoThumb.classList.remove('border-secondary', 'opacity-50');
+        videoThumb.classList.add('border-primary', 'opacity-100');
+    }
+}
+
+function _switchToImage() {
+    var imgContainer = document.getElementById('featureImageContainer');
+    var videoContainer = document.getElementById('featureVideoContainer');
+    var iframe = document.getElementById('featureVideoIframe');
+    
+    if (videoContainer) videoContainer.style.display = 'none';
+    if (iframe) iframe.src = ''; // Detener video
+    if (imgContainer) imgContainer.style.display = '';
+    
+    // Actualizar hint
+    var hint = document.getElementById('featureHint');
+    if (hint) hint.innerHTML = '<i class="bi bi-zoom-in me-1"></i>Click en la imagen para ampliar';
 }
 
 function _updateFeatureImage() {
@@ -321,7 +460,8 @@ function _updateFeatureImage() {
     
     var counter = document.getElementById('featureCounter');
     if (counter) {
-        counter.textContent = 'Imagen ' + (featureCarousel.current + 1) + ' de ' + featureCarousel.images.length;
+        var hasVideo = !!featureCarousel.video;
+        counter.textContent = 'Imagen ' + (featureCarousel.current + 1) + ' de ' + featureCarousel.images.length + (hasVideo ? ' + video' : '');
     }
     
     // Actualizar thumbnails
@@ -337,9 +477,8 @@ function _updateFeatureImage() {
     });
     
     // Scroll thumbnail into view
-    var activeThumb = thumbs[featureCarousel.current];
-    if (activeThumb) {
-        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    if (thumbs[featureCarousel.current]) {
+        thumbs[featureCarousel.current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
     
     updateFeatureNav();
@@ -347,11 +486,12 @@ function _updateFeatureImage() {
 
 function updateFeatureNav() {
     var total = featureCarousel.images.length;
+    var hasVideo = !!featureCarousel.video;
+    var totalItems = total + (hasVideo ? 1 : 0);
     var prev = document.getElementById('featurePrev');
     var next = document.getElementById('featureNext');
     
-    // Ocultar botones si hay una sola imagen
-    if (total <= 1) {
+    if (totalItems <= 1) {
         if (prev) prev.style.display = 'none';
         if (next) next.style.display = 'none';
     } else {

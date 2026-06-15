@@ -461,11 +461,15 @@ Reemplazar `VIDEO_ID` con el ID del video de YouTube.
 
 ### Preparación
 
-1. **VM limpia** con Windows Server o Windows 10/11 (sin aiTi instalado)
-2. **Resolución 1920x1080** en la VM
-3. **Escritorio limpio** — sin iconos innecesarios, wallpaper por defecto de Windows
-4. **Tener el instalador** `aiTi_Setup_vX.X.X.exe` en el Escritorio de la VM
-5. **OBS Studio** corriendo en la máquina HOST (captura la ventana de la VM)
+1. **Misma PC de trabajo** — se graba directamente en la máquina local (no se usa VM por requerimiento de resolución)
+2. **Resolución 1920x1080** en el monitor
+3. **Escritorio limpio** — ocultar iconos innecesarios, wallpaper neutro
+4. **Tener el instalador** `aiTi_Setup_vX.X.X.exe` visible en el Escritorio
+5. **OBS Studio** corriendo en la misma PC (captura de pantalla o ventana)
+6. **Cerrar aplicaciones innecesarias** — solo dejar el explorador y el navegador
+7. **Desactivar Focus Assist** (notificaciones) antes de grabar
+
+**Nota:** Al grabar en la misma PC (no en VM), se obtiene la resolución nativa completa del monitor sin pérdida de calidad por virtualización.
 
 ---
 
@@ -535,16 +539,16 @@ Agregar como texto superpuesto (lower third o centro) en cada transición:
 
 ---
 
-### Captura con OBS (desde el HOST)
+### Captura con OBS (en la misma PC)
 
-1. En OBS, agregar source "Window Capture" → seleccionar la ventana de la VM (VMware/VirtualBox/Hyper-V)
-2. Ajustar el crop para que solo se vea el contenido de la VM (sin bordes del virtualizador)
-3. Presionar "Start Recording"
-4. Hacer todo el flujo de instalación dentro de la VM
+1. En OBS, agregar source "Captura de pantalla" (monitor completo) o "Captura de ventana" (solo una app)
+2. Si usás "Captura de pantalla", asegurarte de que la resolución de salida sea 1920x1080
+3. Presionar "Start Recording" (o atajo F9)
+4. Hacer todo el flujo de instalación
 5. Presionar "Stop Recording"
-6. El video queda en la carpeta de OBS (por defecto `C:\Users\{usuario}\Videos`)
+6. El video queda en `C:\Users\Seba\Videos`
 
-**Alternativa:** Si la VM tiene acceso a OBS, podés grabar directamente dentro de la VM con Xbox Game Bar (Win+G → Start Recording).
+**Tip:** Para el video de instalación, usar "Captura de pantalla" completa es mejor porque se ve el escritorio con el instalador, el UAC, y después el navegador. Todo fluye naturalmente.
 
 ---
 
@@ -629,21 +633,21 @@ Los videos se guardan por defecto en `C:\Users\Seba\Videos`.
 
 | Escena | Fuentes | Uso |
 |--------|---------|-----|
-| Pantalla completa | Captura de pantalla + Audio escritorio | Video de demo general |
+| Pantalla completa | Captura de pantalla + Audio escritorio | Video de demo general e instalación |
 | Solo navegador | Captura de ventana (Chrome) + Audio escritorio | Demo de funcionalidades |
 | Navegador + Logo | Captura de ventana + Imagen (logo aiTi en esquina) | Video comercial |
-| Instalación VM | Captura de ventana (VMware/VirtualBox) | Video de instalación |
 
 ---
 
 ### Tips específicos para grabar demos de aiTi
 
 - Usá **Captura de ventana** apuntando al navegador con aiTi abierto, así no se filtra nada del escritorio
-- Si necesitás mostrar varias cosas (navegador + terminal), usá **Captura de pantalla** completa
+- Si necesitás mostrar varias cosas (navegador + terminal + instalador), usá **Captura de pantalla** completa
 - Poné el navegador en pantalla completa (F11) para que se vea más limpio
 - Para agregar el logo de aiTi como watermark: agregá una fuente "Imagen", redimensionala chica y ponela en una esquina
 - Cerrá notificaciones de Windows antes de grabar (Modo concentración / Focus Assist)
 - Desactivá actualizaciones automáticas para evitar popups durante la grabación
+- **Se graba todo en la misma PC** — no se usa VM. La resolución nativa del monitor da mejor calidad
 
 ---
 

@@ -221,6 +221,12 @@ var featureData = {
         prefix: 'img/features/telefonia-',
         video: '',
         description: 'Gestion de centrales telefonicas, tramas (E1, SIP, analogica) e internos. Asignacion por persona y ubicacion.'
+    },
+    'monitoreo': {
+        title: 'Monitoreo en Tiempo Real',
+        prefix: 'img/features/monitoreo-',
+        video: '',
+        description: 'Supervision en vivo de equipos: CPU, memoria, disco, trafico de red, toner de impresoras, disponibilidad. Graficos interactivos con zoom, alertas configurables y polling automatico.'
     }
 };
 

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - aiTi</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <meta name="description" content="Preguntas frecuentes sobre aiTi: instalación, licencias, funcionalidades, requisitos y soporte.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="FAQ - aiTi">
+    <meta property="og:description" content="Respuestas a las preguntas más comunes sobre aiTi.">
+    <meta property="og:image" content="https://aiti.com.ar/img/og-cover.png">
+    <meta property="og:url" content="https://aiti.com.ar/faq.html">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GTPKG0YPS8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GTPKG0YPS8');
+    </script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background: rgba(45, 55, 72, 0.95); backdrop-filter: blur(10px);">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="index.html">
+                <img src="img/logo_aiti_icon.svg" alt="aiTi" width="40" height="40" class="me-2" style="vertical-align: middle;">
+                <span style="color:#fff;">ai</span><span style="color:#4ECDC4;">T</span><span style="color:#fff;">i</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html#funcionalidades">Funcionalidades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#planes">Planes</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="py-5" style="padding-top: 120px !important;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="fw-bold">Preguntas Frecuentes</h1>
+                <p class="text-muted">Todo lo que necesitás saber sobre aiTi</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+
+                    <!-- GENERAL -->
+                    <h5 class="fw-bold mt-4 mb-3 text-primary"><i class="bi bi-info-circle me-2"></i>General</h5>
+
+                    <div class="accordion" id="faqGeneral">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#g1">
+                                    ¿Qué es aiTi?
+                                </button>
+                            </h2>
+                            <div id="g1" class="accordion-collapse collapse show" data-bs-parent="#faqGeneral">
+                                <div class="accordion-body">
+                                    aiTi es una plataforma web para gestión integral de infraestructura IT. Permite administrar inventario de equipos de red, backups de configuraciones, monitoreo SNMP, direccionamiento IP (IPAM), terminal SSH/Telnet, servicios de internet, telefonía y mucho más. Todo desde una interfaz web unificada, on-premise y multi-área.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#g2">
+                                    ¿Para quién está diseñado?
+                                </button>
+                            </h2>
+                            <div id="g2" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
+                                <div class="accordion-body">
+                                    Para equipos de IT de organizaciones medianas y grandes: áreas de Redes, Telefonía, Soporte, Infraestructura. Ideal para empresas, organismos públicos, universidades y cualquier entidad que gestione equipos de red y necesite trazabilidad, backups automáticos y control de acceso por área.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#g3">
+                                    ¿Qué tipos de equipos puedo gestionar?
+                                </button>
+                            </h2>
+                            <div id="g3" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
+                                <div class="accordion-body">
+                                    Cualquier equipo de infraestructura IT: routers, switches, firewalls, access points, servidores, PCs, impresoras, centrales telefónicas, UPS, teléfonos IP, gateways VoIP, NAS, y accesorios (SFP, power injectors, etc.). El sistema es completamente configurable en tipos, marcas y modelos.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#g4">
+                                    ¿Puedo probarlo antes de comprar?
+                                </button>
+                            </h2>
+                            <div id="g4" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
+                                <div class="accordion-body">
+                                    Sí. Ofrecemos 30 días de evaluación gratuita con todas las funcionalidades habilitadas, sin tarjeta de crédito ni compromiso. Descargá el instalador desde la sección <a href="index.html#descarga">Descarga</a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INSTALACIÓN -->
+                    <h5 class="fw-bold mt-5 mb-3 text-primary"><i class="bi bi-gear me-2"></i>Instalación y Requisitos</h5>
+
+                    <div class="accordion" id="faqInstalacion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#i1">
+                                    ¿Qué necesito para instalar aiTi?
+                                </button>
+                            </h2>
+                            <div id="i1" class="accordion-collapse collapse" data-bs-parent="#faqInstalacion">
+                                <div class="accordion-body">
+                                    Un servidor Windows (10 Pro 64-bit o Server 2022) con al menos 4 GB RAM, 20 GB de disco y acceso a la red LAN. No se requieren dependencias externas: todo viene incluido en el instalador. La instalación tarda aproximadamente 10 minutos.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#i2">
+                                    ¿Se puede instalar en la nube?
+                                </button>
+                            </h2>
+                            <div id="i2" class="accordion-collapse collapse" data-bs-parent="#faqInstalacion">
+                                <div class="accordion-body">
+                                    Sí. Podés instalar aiTi en un VPS Windows (AWS, Azure, DigitalOcean, etc.) y conectarlo a tu red via VPN. De esta forma obtenés alta disponibilidad sin invertir en hardware propio. El sistema necesita acceso a la LAN para las funciones de backup SSH y monitoreo SNMP.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#i3">
+                                    ¿Necesito instalar una base de datos por separado?
+                                </button>
+                            </h2>
+                            <div id="i3" class="accordion-collapse collapse" data-bs-parent="#faqInstalacion">
+                                <div class="accordion-body">
+                                    No. El instalador incluye y configura automáticamente la base de datos de alto rendimiento. No es necesario instalar ni administrar nada adicional.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#i4">
+                                    ¿Cómo se accede al sistema una vez instalado?
+                                </button>
+                            </h2>
+                            <div id="i4" class="accordion-collapse collapse" data-bs-parent="#faqInstalacion">
+                                <div class="accordion-body">
+                                    Desde cualquier navegador web en la red local, ingresando la dirección del servidor (ej: https://sgir.empresa.local). El acceso es via HTTPS con certificado SSL incluido. Compatible con Chrome, Firefox, Edge y Safari.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#i5">
+                                    ¿Se actualiza automáticamente?
+                                </button>
+                            </h2>
+                            <div id="i5" class="accordion-collapse collapse" data-bs-parent="#faqInstalacion">
+                                <div class="accordion-body">
+                                    Las actualizaciones se aplican manualmente ejecutando un script que descarga la última versión, aplica cambios en la base de datos y reinicia los servicios. El proceso tarda menos de 2 minutos y no requiere reinstalación.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LICENCIAMIENTO -->
+                    <h5 class="fw-bold mt-5 mb-3 text-primary"><i class="bi bi-key me-2"></i>Licenciamiento</h5>
+
+                    <div class="accordion" id="faqLicencia">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#l1">
+                                    ¿Cómo funciona el licenciamiento?
+                                </button>
+                            </h2>
+                            <div id="l1" class="accordion-collapse collapse" data-bs-parent="#faqLicencia">
+                                <div class="accordion-body">
+                                    aiTi usa licencia perpetua (pagás una vez, usás para siempre). La licencia se vincula a un servidor específico y define los módulos habilitados y los límites de recursos (cantidad de equipos, usuarios, sitios y grupos).
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#l2">
+                                    ¿Qué pasa cuando vence la licencia trial?
+                                </button>
+                            </h2>
+                            <div id="l2" class="accordion-collapse collapse" data-bs-parent="#faqLicencia">
+                                <div class="accordion-body">
+                                    Después de los 30 días de evaluación, el sistema sigue funcionando en modo lectura (podés consultar datos pero no crear/editar). Para seguir operando, necesitás activar una licencia comercial. Tus datos nunca se pierden.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#l3">
+                                    ¿Puedo agregar módulos después?
+                                </button>
+                            </h2>
+                            <div id="l3" class="accordion-collapse collapse" data-bs-parent="#faqLicencia">
+                                <div class="accordion-body">
+                                    Sí. Podés empezar con los módulos que necesitás y agregar más en cualquier momento. Solo se genera una nueva licencia con los módulos adicionales, sin reinstalar ni perder datos.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#l4">
+                                    ¿La licencia incluye soporte y actualizaciones?
+                                </button>
+                            </h2>
+                            <div id="l4" class="accordion-collapse collapse" data-bs-parent="#faqLicencia">
+                                <div class="accordion-body">
+                                    La licencia perpetua incluye actualizaciones del primer año. Después, las actualizaciones y soporte técnico se contratan por separado con un plan anual opcional.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FUNCIONALIDADES -->
+                    <h5 class="fw-bold mt-5 mb-3 text-primary"><i class="bi bi-puzzle me-2"></i>Funcionalidades</h5>
+
+                    <div class="accordion" id="faqFuncionalidades">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f1">
+                                    ¿Qué marcas de equipos soporta?
+                                </button>
+                            </h2>
+                            <div id="f1" class="accordion-collapse collapse" data-bs-parent="#faqFuncionalidades">
+                                <div class="accordion-body">
+                                    Cualquier marca. El sistema es agnóstico al fabricante: Cisco, Fortinet, MikroTik, HP/Aruba, Juniper, Ubiquiti, TP-Link, Huawei, etc. Los catálogos de tipos, marcas y modelos son completamente configurables. Para backups SSH funciona con cualquier equipo que acepte conexión SSH o Telnet.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2">
+                                    ¿Cómo funcionan los backups automáticos?
+                                </button>
+                            </h2>
+                            <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqFuncionalidades">
+                                <div class="accordion-body">
+                                    El sistema se conecta a cada equipo via SSH o Telnet usando credenciales encriptadas, ejecuta los comandos configurados (ej: "show running-config") y almacena la salida como backup. Se programan automáticamente (diario, semanal, etc.) y se puede comparar versiones con diff visual para detectar cambios.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3">
+                                    ¿Qué es el monitoreo SNMP?
+                                </button>
+                            </h2>
+                            <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faqFuncionalidades">
+                                <div class="accordion-body">
+                                    El módulo de monitoreo consulta periódicamente a los equipos via protocolo SNMP para obtener métricas en tiempo real: CPU, memoria, tráfico de interfaces, temperatura, toner de impresoras, etc. Genera gráficos históricos, alertas por umbral y reportes de disponibilidad.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f4">
+                                    ¿Qué es multi-área?
+                                </button>
+                            </h2>
+                            <div id="f4" class="accordion-collapse collapse" data-bs-parent="#faqFuncionalidades">
+                                <div class="accordion-body">
+                                    El sistema permite que múltiples equipos de trabajo (Redes, Telefonía, Soporte, etc.) operen de forma aislada dentro de la misma instalación. Cada área ve solo sus equipos, usuarios y módulos habilitados. Un usuario puede pertenecer a más de un área y cambiar entre ellas sin cerrar sesión.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f5">
+                                    ¿Puedo importar datos existentes?
+                                </button>
+                            </h2>
+                            <div id="f5" class="accordion-collapse collapse" data-bs-parent="#faqFuncionalidades">
+                                <div class="accordion-body">
+                                    Sí. El módulo de importación masiva permite cargar equipos, sitios, servicios, personas y contactos desde archivos Excel. Incluye vista previa antes de importar, validación de datos y detección de duplicados.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SEGURIDAD -->
+                    <h5 class="fw-bold mt-5 mb-3 text-primary"><i class="bi bi-shield-check me-2"></i>Seguridad</h5>
+
+                    <div class="accordion" id="faqSeguridad">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s1">
+                                    ¿Mis datos están seguros?
+                                </button>
+                            </h2>
+                            <div id="s1" class="accordion-collapse collapse" data-bs-parent="#faqSeguridad">
+                                <div class="accordion-body">
+                                    Sí. aiTi es 100% on-premise: tus datos nunca salen de tu servidor. Las credenciales SSH se almacenan encriptadas, el acceso es via HTTPS, y el sistema incluye auditoría completa de todas las acciones, bloqueo por intentos fallidos y control de sesiones activas.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s2">
+                                    ¿Qué roles de usuario existen?
+                                </button>
+                            </h2>
+                            <div id="s2" class="accordion-collapse collapse" data-bs-parent="#faqSeguridad">
+                                <div class="accordion-body">
+                                    El sistema tiene 4 niveles de acceso: administrador general (configuración y gestión completa), administrador de área (CRUD dentro de su grupo), operador (crear equipos, ejecutar backups) y monitor (solo lectura). Cada rol ve únicamente lo que le corresponde.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s3">
+                                    ¿Se registran las acciones de los usuarios?
+                                </button>
+                            </h2>
+                            <div id="s3" class="accordion-collapse collapse" data-bs-parent="#faqSeguridad">
+                                <div class="accordion-body">
+                                    Sí. Toda acción crítica (crear, editar, eliminar equipos, ejecutar backups, cambios de configuración) queda registrada con usuario, fecha, hora e IP. Los logs de auditoría son consultables desde el sistema con filtros avanzados.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SOPORTE -->
+                    <h5 class="fw-bold mt-5 mb-3 text-primary"><i class="bi bi-headset me-2"></i>Soporte</h5>
+
+                    <div class="accordion" id="faqSoporte">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sp1">
+                                    ¿Cómo puedo contactar soporte?
+                                </button>
+                            </h2>
+                            <div id="sp1" class="accordion-collapse collapse" data-bs-parent="#faqSoporte">
+                                <div class="accordion-body">
+                                    Escribinos a <a href="mailto:info@aiti.com.ar">info@aiti.com.ar</a>. El soporte técnico responde en horario laboral (lunes a viernes, 9 a 18hs Argentina).
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sp2">
+                                    ¿Ofrecen capacitación?
+                                </button>
+                            </h2>
+                            <div id="sp2" class="accordion-collapse collapse" data-bs-parent="#faqSoporte">
+                                <div class="accordion-body">
+                                    Sí. Ofrecemos capacitación remota para el equipo de IT. El sistema también incluye ayuda contextual en cada pantalla, tour guiado para nuevos usuarios y video de instalación.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="text-center mt-5 py-4 border-top">
+                        <p class="text-muted mb-3">¿No encontraste lo que buscabas?</p>
+                        <a href="index.html#contacto" class="btn btn-primary">
+                            <i class="bi bi-envelope me-2"></i>Contactanos
+                        </a>
+                        <a href="index.html#descarga" class="btn btn-outline-primary ms-2">
+                            <i class="bi bi-download me-2"></i>Probar gratis
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+            <p class="mb-1"><img src="img/logo_aiti_icon.svg" alt="" width="18" height="18" class="me-1"><strong><span style="color:#fff;">ai</span><span style="color:#4ECDC4;">T</span><span style="color:#fff;">i</span></strong> — Sistema de Gestión Integral de Infraestructura IT</p>
+            <p class="mb-0 small">© 2026 <span style="color:#fff;">ai</span><span style="color:#4ECDC4;">T</span><span style="color:#fff;">i</span> Software. Todos los derechos reservados. · <a href="index.html" class="text-white-50">Inicio</a> · <a href="novedades.html" class="text-white-50">Novedades</a> · <a href="faq.html" class="text-white-50">FAQ</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

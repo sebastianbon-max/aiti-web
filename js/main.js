@@ -615,3 +615,68 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+
+// ============================================================================
+// Cotización form handling
+// ============================================================================
+var cotForm = document.getElementById('cotizacionForm');
+if (cotForm) {
+cotForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var nombre = document.getElementById('cot_nombre').value.trim();
+    var empresa = document.getElementById('cot_empresa').value.trim();
+    var email = document.getElementById('cot_email').value.trim();
+    var telefono = document.getElementById('cot_telefono').value.trim();
+    var equipos = document.getElementById('cot_equipos').value;
+    var comentario = document.getElementById('cot_comentario').value.trim();
+    
+    // Módulos seleccionados
+    var modulosSelect = document.getElementById('cot_modulos');
+    var modulos = [];
+    for (var i = 0; i < modulosSelect.selectedOptions.length; i++) {
+        modulos.push(modulosSelect.selectedOptions[i].value);
+    }
+    
+    if (!nombre || !empresa || !email) {
+        alert('Por favor complete nombre, empresa y email.');
+        return;
+    }
+    
+    // Enviar a Google Sheets
+    var params = new URLSearchParams(window.location.search);
+    fetch('https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            tipo: 'COTIZACION',
+            nombre: nombre,
+            empresa: empresa,
+            email: email,
+            telefono: telefono,
+            equipos: equipos,
+            modulos: modulos.join(', '),
+            comentario: comentario,
+            pagina: window.location.pathname,
+            utm_source: params.get('utm_source') || '(directo)',
+            utm_medium: params.get('utm_medium') || '',
+            utm_campaign: params.get('utm_campaign') || '',
+            fecha_local: new Date().toLocaleString('es-AR')
+        })
+    }).catch(function() {});
+    
+    // Mostrar éxito
+    document.getElementById('cotizacionForm').style.display = 'none';
+    document.getElementById('cotizacionSuccess').style.display = '';
+    
+    // Analytics event
+    if (typeof gtag === 'function') {
+        gtag('event', 'solicitud_cotizacion', {
+            event_category: 'conversion',
+            event_label: empresa
+        });
+    }
+});
+}

@@ -680,3 +680,63 @@ cotForm.addEventListener('submit', function(e) {
     }
 });
 }
+
+
+// ============================================================================
+// Cotizacion form handling
+// ============================================================================
+var cotForm = document.getElementById('cotizacionForm');
+if (cotForm) {
+cotForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var nombre = document.getElementById('cot_nombre').value.trim();
+    var empresa = document.getElementById('cot_empresa').value.trim();
+    var email = document.getElementById('cot_email').value.trim();
+    var telefono = document.getElementById('cot_telefono').value.trim();
+    var equipos = document.getElementById('cot_equipos').value;
+    var comentarios = document.getElementById('cot_comentarios').value.trim();
+
+    // Modulos seleccionados
+    var modulos = [];
+    document.querySelectorAll('#cotizacionForm .form-check-input:checked').forEach(function(cb) {
+        modulos.push(cb.value);
+    });
+
+    if (!nombre || !empresa || !email) {
+        alert('Por favor complete todos los campos obligatorios.');
+        return;
+    }
+
+    // Deshabilitar boton
+    var btn = document.getElementById('cotBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Enviando...';
+
+    // Enviar a Google Sheets (mismo endpoint que descarga, con tipo=cotizacion)
+    fetch('https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            tipo: 'COTIZACION',
+            nombre: nombre,
+            empresa: empresa,
+            email: email,
+            telefono: telefono,
+            equipos: equipos,
+            modulos: modulos.join(', '),
+            comentarios: comentarios,
+            pagina: window.location.pathname + '#cotizacion',
+            dispositivo: screen.width <= 768 ? 'Mobile' : 'Desktop',
+            fecha_local: new Date().toLocaleString('es-AR')
+        })
+    }).then(function() {
+        document.getElementById('cotizacionForm').style.display = 'none';
+        document.getElementById('cotSuccess').style.display = '';
+    }).catch(function() {
+        document.getElementById('cotizacionForm').style.display = 'none';
+        document.getElementById('cotSuccess').style.display = '';
+    });
+});
+}

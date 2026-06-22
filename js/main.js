@@ -62,13 +62,12 @@ dlForm.addEventListener('submit', function(e) {
         });
     }
     
-    // Configurar link de descarga
-    // TODO: Reemplazar con la URL real del instalador cuando est� disponible
-    var downloadUrl = 'aiTi_Setup_v1.0.0.exe';
+    // Configurar link de descarga (GitHub Release público)
+    var downloadUrl = 'https://github.com/sebastianbon-max/aiti-web/releases/download/v3.9.2/aiTi_Setup_v3.9.2.exe';
     document.getElementById('downloadLink').href = downloadUrl;
     
-    // Iniciar descarga autom�tica
-    // window.location.href = downloadUrl;
+    // Iniciar descarga automática
+    window.location.href = downloadUrl;
     
     console.log('Lead registrado:', { nombre, empresa, email, equipos });
 });
@@ -226,7 +225,7 @@ var featureData = {
         title: 'Monitoreo en Tiempo Real',
         prefix: 'img/features/monitoreo-',
         video: '',
-        description: 'Supervision en vivo de equipos: CPU, memoria, disco, trafico de red, toner de impresoras, disponibilidad. Graficos interactivos con zoom, alertas configurables y polling automatico.'
+        description: 'Supervision en vivo de equipos: CPU, memoria, disco, trafico de red, toner de impresoras, disponibilidad. Graficos interactivos con zoom, alertas configurables y polling automatico. Soporta equipos de red (SNMP) y servidores/PCs Windows (WMI) sin configuracion adicional en el equipo remoto.'
     }
 };
 

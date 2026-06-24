@@ -19,9 +19,11 @@ body {
 
 /* Navbar */
 #mainNav {
-    background: transparent;
+    background: rgba(45, 55, 72, 0.95) !important;
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
-    padding: 1rem 0;
 }
 
 #mainNav.scrolled {

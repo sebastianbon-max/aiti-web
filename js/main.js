@@ -739,3 +739,69 @@ cotForm.addEventListener('submit', function(e) {
     });
 });
 }
+
+// ============================================================================
+// Demo form handling
+// ============================================================================
+var demoForm = document.getElementById('demoForm');
+if (demoForm) {
+demoForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var nombre = document.getElementById('demo_nombre').value.trim();
+    var empresa = document.getElementById('demo_empresa').value.trim();
+    var email = document.getElementById('demo_email').value.trim();
+    var telefono = document.getElementById('demo_telefono').value.trim();
+    var comentario = document.getElementById('demo_comentario').value.trim();
+    
+    // Modulos seleccionados
+    var modulosSelect = document.getElementById('demo_modulos');
+    var modulos = [];
+    for (var i = 0; i < modulosSelect.selectedOptions.length; i++) {
+        modulos.push(modulosSelect.selectedOptions[i].value);
+    }
+    
+    if (!nombre || !empresa || !email) {
+        alert('Por favor complete nombre, empresa y email.');
+        return;
+    }
+    
+    // Deshabilitar boton
+    var btn = document.getElementById('demoBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Enviando...';
+    
+    // Enviar a Google Sheets
+    fetch('https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            tipo: 'DEMO',
+            nombre: nombre,
+            empresa: empresa,
+            email: email,
+            telefono: telefono,
+            modulos: modulos.join(', '),
+            comentario: comentario,
+            pagina: window.location.pathname + '#demo',
+            dispositivo: screen.width <= 768 ? 'Mobile' : 'Desktop',
+            fecha_local: new Date().toLocaleString('es-AR')
+        })
+    }).then(function() {
+        document.getElementById('demoForm').style.display = 'none';
+        document.getElementById('demoSuccess').style.display = '';
+    }).catch(function() {
+        document.getElementById('demoForm').style.display = 'none';
+        document.getElementById('demoSuccess').style.display = '';
+    });
+    
+    // Analytics event
+    if (typeof gtag === 'function') {
+        gtag('event', 'solicitud_demo', {
+            event_category: 'conversion',
+            event_label: empresa
+        });
+    }
+});
+}

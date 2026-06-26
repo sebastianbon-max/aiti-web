@@ -68,7 +68,7 @@
                             <div class="card-body">
                                 <h6 class="fw-bold text-success mb-2"><i class="bi bi-plus-circle me-1"></i>Nuevas funcionalidades</h6>
                                 <ul class="mb-3">
-                                    <li>Monitoreo e IPAM como licencias add-on independientes (cada uno con su propio limite de equipos/subredes)</li>
+                                    <li>IPAM como licencia add-on independiente (con su propio limite de subredes)</li>
                                     <li>Solicitar Demo en vivo desde la web publica</li>
                                     <li>Nombre de empresa configurable en todos los correos del sistema (reemplaza referencias internas)</li>
                                     <li>Vista previa de reclamos: botones para copiar asunto y descripcion al portapapeles (para pegar en sistemas de tickets externos)</li>
@@ -89,36 +89,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- v3.9.3 -->
-                    <div class="changelog-entry mb-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <span class="badge bg-primary fs-6 me-3">v3.9.3</span>
-                            <span class="text-muted">Junio 2026</span>
-                            
-                        </div>
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body">
-                                <h6 class="fw-bold text-success mb-2"><i class="bi bi-plus-circle me-1"></i>Monitoreo WMI para Windows</h6>
-                                <ul class="mb-3">
-                                    <li>Monitoreo de servidores y PCs Windows sin necesidad de habilitar SNMP</li>
-                                    <li>Metricas: CPU, memoria RAM, discos logicos, servicios Windows, uptime</li>
-                                    <li>Discovery automatico: escanea el equipo y muestra que se puede monitorear</li>
-                                    <li>Credenciales encriptadas con herencia en cascada (igual que SNMP)</li>
-                                    <li>Deteccion de servicios criticos (Active Directory, DNS, SQL Server, IIS, Hyper-V)</li>
-                                    <li>Alertas si un servicio se detiene o si CPU/RAM/disco superan umbrales</li>
-                                    <li>Integrado al mismo ciclo de polling, graficos y alertas que SNMP</li>
-                                </ul>
-                                <h6 class="fw-bold text-info mb-2"><i class="bi bi-arrow-up-circle me-1"></i>Mejoras</h6>
-                                <ul class="mb-0">
-                                    <li>Reclamos ISP: plantillas pre-armadas con variables y checklist de diagnostico</li>
-                                    <li>Metricas por proveedor: rating, score, tendencia mensual</li>
-                                    <li>Equipos externos: monitoreo sin necesidad de cargar en inventario</li>
-                                    <li>Disponibilidad: exportacion Excel ademas de PDF</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- v3.8.0 -->
                     <div class="changelog-entry mb-4">
                         <div class="d-flex align-items-center mb-3">
@@ -127,21 +97,10 @@
                         </div>
                         <div class="card border-0 shadow-sm">
                             <div class="card-body">
-                                <h6 class="fw-bold text-success mb-2"><i class="bi bi-plus-circle me-1"></i>Módulo de Monitoreo en Tiempo Real</h6>
-                                <ul class="mb-3">
-                                    <li>Supervisión en vivo de equipos via SNMP v1/v2c: CPU, memoria, disco, tráfico de red, toner, disponibilidad</li>
-                                    <li>Gráficos interactivos con zoom, desplazamiento y rangos temporales (2h a 30 días + rango custom)</li>
-                                    <li>Escaneo automático: descubre métricas disponibles y permite seleccionar cuáles monitorear</li>
-                                    <li>Alertas configurables por umbral con cooldown y auto-resolución</li>
-                                    <li>Herencia de configuración: community string se propaga Tipo → Marca → Modelo → Equipo</li>
-                                    <li>Sensor de Ping integrado: disponibilidad como métrica base de cada equipo</li>
-                                    <li>Sensores reordenables por equipo según preferencia del usuario</li>
-                                    <li>Purga automática de datos históricos con retención configurable</li>
-                                </ul>
-                                <h6 class="fw-bold text-info mb-2"><i class="bi bi-arrow-up-circle me-1"></i>Mejoras</h6>
+                                <h6 class="fw-bold text-success mb-2"><i class="bi bi-plus-circle me-1"></i>Mejoras de plataforma</h6>
                                 <ul class="mb-0">
                                     <li>Sidebar con indicador de página activa automático</li>
-                                    <li>Catálogos: nuevo flag "Soporta SNMP" en Tipos de Equipo</li>
+                                    <li>Mejoras generales de rendimiento y estabilidad</li>
                                 </ul>
                             </div>
                         </div>

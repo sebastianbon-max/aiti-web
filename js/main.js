@@ -113,6 +113,12 @@ var featureData = {
         video: '',
         description: 'Estados de equipo, asignacion a personas responsables con trazabilidad completa.'
     },
+    'vms': {
+        title: 'Maquinas Virtuales',
+        prefix: 'img/features/inventario-',
+        video: '',
+        description: 'Documente las VMs de cada servidor: CPU, RAM, disco, sistema operativo, estado y proposito. Barras de capacidad por host, vista global con filtros e integracion con el mapa de IPs.'
+    },
     'diff': {
         title: 'Comparacion de Configuraciones',
         prefix: 'img/features/diff-',

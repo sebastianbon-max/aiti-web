@@ -637,13 +637,6 @@ cotForm.addEventListener('submit', function(e) {
     var equipos = document.getElementById('cot_equipos').value;
     var comentario = document.getElementById('cot_comentario').value.trim();
     
-    // Módulos seleccionados
-    var modulosSelect = document.getElementById('cot_modulos');
-    var modulos = [];
-    for (var i = 0; i < modulosSelect.selectedOptions.length; i++) {
-        modulos.push(modulosSelect.selectedOptions[i].value);
-    }
-    
     if (!nombre || !empresa || !email) {
         alert('Por favor complete nombre, empresa y email.');
         return;
@@ -662,7 +655,6 @@ cotForm.addEventListener('submit', function(e) {
             email: email,
             telefono: telefono,
             equipos: equipos,
-            modulos: modulos.join(', '),
             comentario: comentario,
             pagina: window.location.pathname,
             utm_source: params.get('utm_source') || '(directo)',

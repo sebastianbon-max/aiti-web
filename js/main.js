@@ -93,7 +93,7 @@ var featureData = {
         title: 'Backups Automaticos',
         prefix: 'img/features/backups-',
         video: '',
-        description: 'Respaldo automatico via SSH/Telnet, mapa de calor de backups, historial y comparacion visual de cambios.'
+        description: 'Respaldo automatico via SSH/Telnet con deteccion de cambios: si alguien modifico la configuracion, el sistema lo detecta y alerta. Historial completo, comparacion visual, upload manual y programacion de backups.'
     },
     'terminal': {
         title: 'Terminal SSH/Telnet',
@@ -120,10 +120,10 @@ var featureData = {
         description: 'Documente las VMs de cada servidor: CPU, RAM, disco, sistema operativo, estado y proposito. Barras de capacidad por host, vista global con filtros e integracion con el mapa de IPs.'
     },
     'diff': {
-        title: 'Comparacion de Configuraciones',
+        title: 'Deteccion de Cambios en Configuraciones',
         prefix: 'img/features/diff-',
         video: '',
-        description: 'Diff visual lado a lado entre versiones de backup. Detecte cambios al instante.'
+        description: 'Deteccion automatica de cambios: al hacer backup, el sistema compara con la version anterior y alerta si algo cambio sin registro. Historial de cambios con severidad, revision por responsables y diff visual lado a lado.'
     },
     'vpn': {
         title: 'VPN y Conectividad',

@@ -235,6 +235,9 @@ body {
 @media (max-width: 768px) {
     .hero-section {
         padding-top: 100px;
+        padding-bottom: 40px;
+        min-height: auto;
+        overflow: visible;
         text-align: center;
     }
     

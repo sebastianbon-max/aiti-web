@@ -7,8 +7,10 @@
     --primary: #4299e1;
     --primary-dark: #3182ce;
     --primary-light: #63b3ed;
-    --gradient-start: #667eea;
-    --gradient-end: #764ba2;
+    --accent: #4ECDC4;
+    --accent-dark: #44b8b0;
+    --navy: #2d3748;
+    --navy-light: #4a5568;
 }
 
 /* General */
@@ -40,8 +42,9 @@ body {
 /* Hero */
 .hero-section {
     min-height: 100vh;
-    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-    padding-top: 80px;
+    background: #ffffff;
+    padding-top: 100px;
+    padding-bottom: 60px;
     position: relative;
     overflow: hidden;
 }
@@ -58,7 +61,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background: radial-gradient(ellipse at 70% 50%, rgba(78, 205, 196, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(66, 153, 225, 0.04) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -68,12 +72,11 @@ body {
 }
 
 .mockup-window {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: #fff;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid #e2e8f0;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     transform: rotateY(-5deg) rotateX(2deg);
     transition: transform 0.3s ease;
 }
@@ -83,7 +86,7 @@ body {
 }
 
 .mockup-header {
-    background: rgba(0, 0, 0, 0.3);
+    background: #2d3748;
     padding: 10px 15px;
     display: flex;
     gap: 6px;
@@ -107,7 +110,7 @@ body {
 
 .mockup-sidebar {
     width: 50px;
-    background: rgba(255, 255, 255, 0.1);
+    background: #f7fafc;
     border-radius: 8px;
 }
 
@@ -120,13 +123,13 @@ body {
 
 .mockup-card {
     height: 40px;
-    background: rgba(255, 255, 255, 0.15);
+    background: #edf2f7;
     border-radius: 8px;
 }
 
 .mockup-table {
     flex: 1;
-    background: rgba(255, 255, 255, 0.08);
+    background: #f7fafc;
     border-radius: 8px;
 }
 
@@ -169,7 +172,7 @@ body {
 .feature-icon {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, #4ECDC4, #44b8b0);
     border-radius: 10px;
     display: flex;
     align-items: center;

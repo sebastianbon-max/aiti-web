@@ -64,8 +64,13 @@
         </div>
     </nav>
 
+    <!-- Banner de Lanzamiento -->
+    <div style="background: linear-gradient(135deg, #1B2A4A, #2a3f6b); color: #fff; text-align: center; padding: 10px 15px; position: fixed; top: 56px; width: 100%; z-index: 1029; font-size: 0.9rem;">
+        <strong style="color: #4ECDC4;"><i class="bi bi-tag-fill me-1"></i>LANZAMIENTO — 45% OFF</strong> para los primeros 5 clientes · <span style="opacity: 0.85;">Quedan pocos lugares</span>
+    </div>
+
     <!-- Hero -->
-    <section class="hero-section d-flex align-items-center" id="hero">
+    <section class="hero-section d-flex align-items-center" id="hero" style="padding-top: 40px;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -141,15 +146,15 @@
                     <div class="feature-card" data-bs-toggle="modal" data-bs-target="#featureModal" onclick="showFeature('backups')" style="cursor:pointer;">
                         <div class="feature-icon"><i class="bi bi-cloud-download"></i></div>
                         <h5>Backups Automáticos</h5>
-                        <p class="text-muted">Respaldo automático de configuraciones via SSH/Telnet. Detección de cambios con alerta si alguien modificó la config sin registrarlo. Upload manual, comparación visual y historial completo.</p>
+                        <p class="text-muted">Respaldo automático de configuraciones de equipos de red. Historial completo de versiones con comparación visual para ver exactamente qué cambió entre un backup y otro.</p>
                         
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="feature-card" data-bs-toggle="modal" data-bs-target="#featureModal" onclick="showFeature('terminal')" style="cursor:pointer;">
                         <div class="feature-icon"><i class="bi bi-terminal"></i></div>
-                        <h5>Terminal SSH/Telnet</h5>
-                        <p class="text-muted">Conexión directa a equipos desde el navegador. Multipaste, snippets, vista grilla y historial de sesiones.</p>
+                        <h5>Terminal Remota</h5>
+                        <p class="text-muted">Conectate a cualquier equipo de red desde el navegador, sin instalar nada. Comandos guardados, vista múltiple y ejecución masiva en varios equipos a la vez.</p>
                         
                     </div>
                 </div>
@@ -181,15 +186,15 @@
                     <div class="feature-card" data-bs-toggle="modal" data-bs-target="#featureModal" onclick="showFeature('monitoreo')" style="cursor:pointer;">
                         <div class="feature-icon"><i class="bi bi-activity"></i></div>
                         <h5>Monitoreo en Tiempo Real</h5>
-                        <p class="text-muted">Supervisión de equipos y servidores: disponibilidad, uso de CPU, RAM, disco, interfaces de red. Alertas por umbral, gráficos temporales y dashboard de estado.</p>
+                        <p class="text-muted">Sepa al instante si un equipo se cayó o está sobrecargado. Alertas automáticas, gráficos de rendimiento y mapa visual de toda su red con estado en vivo.</p>
                         
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="feature-card" data-bs-toggle="modal" data-bs-target="#featureModal" onclick="showFeature('redes')" style="cursor:pointer;">
                         <div class="feature-icon"><i class="bi bi-hdd-network"></i></div>
-                        <h5>Direccionamiento IP (IPAM)</h5>
-                        <p class="text-muted">Mapa visual de IPs por subred con vista jerárquica del plan de direccionamiento completo. Detección automática de redes, duplicados, rangos DHCP, ocupación y alertas. Visualice la estructura de subredes en árbol para entender cómo se segmenta su red de un vistazo.</p>
+                        <h5>Mapa de Direcciones IP</h5>
+                        <p class="text-muted">Sepa qué IP tiene cada equipo, quién la tuvo antes y cuándo cambió. Vista visual por colores, detección de conflictos automática y alertas cuando una red se está llenando.</p>
                         
                     </div>
                 </div>
@@ -200,8 +205,8 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="feature-card" data-bs-toggle="modal" data-bs-target="#featureModal" onclick="showFeature('vpn')" style="cursor:pointer;">
                         <div class="feature-icon"><i class="bi bi-diagram-3"></i></div>
-                        <h5>VPN y Conectividad</h5>
-                        <p class="text-muted">Gestión de túneles VPN bidireccionales. Vista de mapa con conexiones entre sitios y equipos.</p>
+                        <h5>VPN y Conectividad entre Sitios</h5>
+                        <p class="text-muted">Documente qué sitios están conectados entre sí, por dónde pasan los enlaces y su estado actual. Mapa visual de conectividad.</p>
                         
                     </div>
                 </div>
@@ -225,7 +230,7 @@
                     <div class="feature-card" data-bs-toggle="modal" data-bs-target="#featureModal" onclick="showFeature('servicios')" style="cursor:pointer;">
                         <div class="feature-icon"><i class="bi bi-globe2"></i></div>
                         <h5>Servicios de Internet</h5>
-                        <p class="text-muted">Gestión de contratos ISP, proveedores, velocidades, pagos y vencimientos. Reclamos a proveedores con seguimiento, métricas y plantillas pre-armadas.</p>
+                        <p class="text-muted">Controle cuánto paga por cada enlace, si el precio subió, cuándo vence el contrato y cuántas veces se cayó. Reclamos al proveedor con métricas reales.</p>
                         
                     </div>
                 </div>

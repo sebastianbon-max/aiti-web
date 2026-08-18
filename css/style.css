@@ -43,7 +43,7 @@ body {
 .hero-section {
     min-height: 100vh;
     background: #ffffff;
-    padding-top: 100px;
+    padding-top: 138px;
     padding-bottom: 60px;
     position: relative;
     overflow: hidden;
@@ -237,7 +237,7 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
     .hero-section {
-        padding-top: 100px;
+        padding-top: 138px;
         padding-bottom: 40px;
         min-height: auto;
         overflow: visible;

@@ -63,7 +63,7 @@ dlForm.addEventListener('submit', function(e) {
     }
     
     // Configurar link de descarga (GitHub Release público)
-    var downloadUrl = 'https://github.com/sebastianbon-max/aiti-web/releases/download/v3.10.0/aiTi_Setup_v3.10.0.exe';
+    var downloadUrl = 'https://github.com/sebastianbon-max/aiti-web/releases/download/v3.10.11/aiTi_Setup_v3.10.11.exe';
     document.getElementById('downloadLink').href = downloadUrl;
     
     // Iniciar descarga automática

@@ -165,7 +165,7 @@ var featureData = {
         title: 'Credenciales Seguras',
         prefix: 'img/features/credenciales-',
         video: '',
-        description: 'Credenciales encriptadas con herencia en cascada Tipo, Marca, Modelo y Equipo.'
+        description: 'Credenciales cifradas con herencia en cascada Tipo, Marca, Modelo y Equipo.'
     },
     'importacion': {
         title: 'Importacion Masiva',

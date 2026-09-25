@@ -73,7 +73,6 @@ if (probarForm) {
         var empresa = document.getElementById('pr_empresa').value.trim();
         var email = document.getElementById('pr_email').value.trim();
         var telefono = document.getElementById('pr_telefono').value.trim();
-        var equipos = document.getElementById('pr_equipos') ? document.getElementById('pr_equipos').value : '';
 
         if (!nombre || !empresa || !email) {
             alert('Por favor complete nombre, empresa y email.');
@@ -92,7 +91,6 @@ if (probarForm) {
                 empresa: empresa,
                 email: email,
                 telefono: telefono,
-                equipos: esDescarga ? equipos : '',
                 pagina: window.location.pathname,
                 utm_source: params.get('utm_source') || '(directo)',
                 utm_medium: params.get('utm_medium') || '',

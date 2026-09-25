@@ -12,124 +12,134 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Download form handling
-var dlForm = document.getElementById('downloadForm');
-if (dlForm) {
-dlForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const nombre = document.getElementById('dl_nombre').value.trim();
-    const empresa = document.getElementById('dl_empresa').value.trim();
-    const email = document.getElementById('dl_email').value.trim();
-    const equipos = document.getElementById('dl_equipos').value;
-    
-    if (!nombre || !empresa || !email) {
-        alert('Por favor complete todos los campos obligatorios.');
-        return;
+// ============================================================================
+// Formulario unificado "Probar aiTi" — un solo form con selector:
+//   DEMO      → solo registra en la planilla + notifica. Las credenciales se
+//               aprueban/envían manualmente desde el panel interno (no automático).
+//   DESCARGA  → registra en la planilla + dispara la descarga del trial.
+// Ambos escriben en el mismo Google Apps Script con el campo 'tipo'.
+// ============================================================================
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec';
+var TRIAL_DOWNLOAD_URL = 'https://github.com/sebastianbon-max/aiti-web/releases/download/v3.10.23/aiTi_Setup_v3.10.23.exe';
+
+// Actualiza textos/campos visibles según el modo elegido (DEMO / DESCARGA)
+function _actualizarModoProbar() {
+    var esDescarga = document.getElementById('modo_descarga') && document.getElementById('modo_descarga').checked;
+
+    var camposDescarga = document.querySelectorAll('.campo-descarga');
+    camposDescarga.forEach(function(el) { el.style.display = esDescarga ? '' : 'none'; });
+
+    var infoDemo = document.querySelector('.info-demo');
+    var infoDescarga = document.querySelector('.info-descarga');
+    if (infoDemo) infoDemo.style.display = esDescarga ? 'none' : '';
+    if (infoDescarga) infoDescarga.style.display = esDescarga ? '' : 'none';
+
+    var btnText = document.getElementById('probarBtnText');
+    var btnIcon = document.getElementById('probarBtnIcon');
+    var hint = document.getElementById('probarHint');
+    if (esDescarga) {
+        if (btnText) btnText.textContent = 'Descargar el trial (30 días)';
+        if (btnIcon) btnIcon.className = 'bi bi-download me-2';
+        if (hint) hint.innerHTML = '<i class="bi bi-shield-check me-1"></i>Todas las funcionalidades habilitadas. Sin tarjeta de crédito.';
+    } else {
+        if (btnText) btnText.textContent = 'Solicitar acceso a la demo';
+        if (btnIcon) btnIcon.className = 'bi bi-box-arrow-in-right me-2';
+        if (hint) hint.innerHTML = '<i class="bi bi-clock me-1"></i>Recibirá las credenciales de acceso en menos de 24 hs hábiles.';
     }
-    
-    // Guardar lead en Google Sheets (backend persistente)
-    var params = new URLSearchParams(window.location.search);
-    fetch('https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            tipo: 'DESCARGA',
-            nombre: nombre,
-            empresa: empresa,
-            email: email,
-            equipos: equipos,
-            pagina: window.location.pathname,
-            utm_source: params.get('utm_source') || '(directo)',
-            utm_medium: params.get('utm_medium') || '',
-            utm_campaign: params.get('utm_campaign') || '',
-            idioma: navigator.language || '',
-            dispositivo: screen.width <= 768 ? 'Mobile' : 'Desktop',
-            fecha_local: new Date().toLocaleString('es-AR')
-        })
-    }).catch(function() {}); // Silenciar errores (no bloquear la descarga)
-    
-    // Mostrar �xito y link de descarga
-    document.getElementById('downloadForm').style.display = 'none';
-    document.getElementById('downloadSuccess').style.display = '';
-    
-    // Registrar evento en Google Analytics
-    if (typeof gtag === 'function') {
-        gtag('event', 'download_trial', {
-            'event_category': 'conversion',
-            'event_label': empresa,
-            'value': 1
-        });
-    }
-    
-    // Configurar link de descarga (GitHub Release público)
-    var downloadUrl = 'https://github.com/sebastianbon-max/aiti-web/releases/download/v3.10.23/aiTi_Setup_v3.10.23.exe';
-    document.getElementById('downloadLink').href = downloadUrl;
-    
-    // Iniciar descarga automática
-    window.location.href = downloadUrl;
-    
-    console.log('Lead registrado:', { nombre, empresa, email, equipos });
-});
 }
 
-// ============================================================================
-// Demo Online form handling — mismo backend/registro que la descarga, con
-// tipo 'DEMO' para distinguirlo en la planilla. Antes no tenía handler y el
-// botón "Solicitar acceso a la demo" no hacía nada.
-// ============================================================================
-var demoForm = document.getElementById('demoForm');
-if (demoForm) {
-demoForm.addEventListener('submit', function(e) {
-    e.preventDefault();
+var probarForm = document.getElementById('probarForm');
+if (probarForm) {
+    // Cambiar textos/campos al alternar el modo
+    document.querySelectorAll('input[name="modo"]').forEach(function(radio) {
+        radio.addEventListener('change', _actualizarModoProbar);
+    });
+    _actualizarModoProbar();
 
-    var nombre = document.getElementById('demo_nombre').value.trim();
-    var empresa = document.getElementById('demo_empresa').value.trim();
-    var email = document.getElementById('demo_email').value.trim();
-    var telefono = document.getElementById('demo_telefono').value.trim();
+    probarForm.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-    if (!nombre || !empresa || !email) {
-        alert('Por favor complete nombre, empresa y email.');
-        return;
-    }
+        // Anti-bot: si el honeypot vino completo, descartar en silencio
+        var honeypot = document.getElementById('pr_website');
+        if (honeypot && honeypot.value.trim() !== '') {
+            return;
+        }
 
-    // Registrar en la misma planilla que la descarga (campo tipo = DEMO).
-    var params = new URLSearchParams(window.location.search);
-    fetch('https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            tipo: 'DEMO',
-            nombre: nombre,
-            empresa: empresa,
-            email: email,
-            telefono: telefono,
-            pagina: window.location.pathname,
-            utm_source: params.get('utm_source') || '(directo)',
-            utm_medium: params.get('utm_medium') || '',
-            utm_campaign: params.get('utm_campaign') || '',
-            idioma: navigator.language || '',
-            dispositivo: screen.width <= 768 ? 'Mobile' : 'Desktop',
-            fecha_local: new Date().toLocaleString('es-AR')
-        })
-    }).catch(function() {});
+        var modoEl = document.querySelector('input[name="modo"]:checked');
+        var modo = modoEl ? modoEl.value : 'DEMO';
+        var esDescarga = (modo === 'DESCARGA');
 
-    // Mostrar éxito
-    document.getElementById('demoForm').style.display = 'none';
-    document.getElementById('demoSuccess').style.display = '';
+        var nombre = document.getElementById('pr_nombre').value.trim();
+        var empresa = document.getElementById('pr_empresa').value.trim();
+        var email = document.getElementById('pr_email').value.trim();
+        var telefono = document.getElementById('pr_telefono').value.trim();
+        var equipos = document.getElementById('pr_equipos') ? document.getElementById('pr_equipos').value : '';
 
-    // Analytics event
-    if (typeof gtag === 'function') {
-        gtag('event', 'solicitud_demo', {
-            event_category: 'conversion',
-            event_label: empresa
-        });
-    }
+        if (!nombre || !empresa || !email) {
+            alert('Por favor complete nombre, empresa y email.');
+            return;
+        }
 
-    console.log('Solicitud de demo registrada:', { nombre, empresa, email });
-});
+        // Registrar en la planilla (mismo backend, campo tipo = DEMO / DESCARGA)
+        var params = new URLSearchParams(window.location.search);
+        fetch(APPS_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                tipo: modo,
+                nombre: nombre,
+                empresa: empresa,
+                email: email,
+                telefono: telefono,
+                equipos: esDescarga ? equipos : '',
+                pagina: window.location.pathname,
+                utm_source: params.get('utm_source') || '(directo)',
+                utm_medium: params.get('utm_medium') || '',
+                utm_campaign: params.get('utm_campaign') || '',
+                idioma: navigator.language || '',
+                dispositivo: screen.width <= 768 ? 'Mobile' : 'Desktop',
+                fecha_local: new Date().toLocaleString('es-AR')
+            })
+        }).catch(function() {}); // Silenciar errores (no bloquear la descarga)
+
+        // Mostrar éxito con mensaje según el modo
+        document.getElementById('probarForm').style.display = 'none';
+        var success = document.getElementById('probarSuccess');
+        var successTitle = document.getElementById('probarSuccessTitle');
+        var successText = document.getElementById('probarSuccessText');
+        var downloadLink = document.getElementById('probarDownloadLink');
+
+        if (esDescarga) {
+            if (successTitle) successTitle.textContent = '¡Descarga iniciada!';
+            if (successText) successText.textContent = 'Si no comenzó automáticamente, usá el botón:';
+            if (downloadLink) {
+                downloadLink.href = TRIAL_DOWNLOAD_URL;
+                downloadLink.style.display = '';
+            }
+        } else {
+            if (successTitle) successTitle.textContent = '¡Solicitud recibida!';
+            if (successText) successText.textContent = 'Le enviaremos las credenciales de acceso a la brevedad.';
+            if (downloadLink) downloadLink.style.display = 'none';
+        }
+        if (success) success.style.display = '';
+
+        // Analytics
+        if (typeof gtag === 'function') {
+            gtag('event', esDescarga ? 'download_trial' : 'solicitud_demo', {
+                event_category: 'conversion',
+                event_label: empresa,
+                value: 1
+            });
+        }
+
+        // Solo la descarga dispara el archivo
+        if (esDescarga) {
+            window.location.href = TRIAL_DOWNLOAD_URL;
+        }
+
+        console.log('Lead registrado:', { tipo: modo, nombre: nombre, empresa: empresa, email: email });
+    });
 }
 
 // Feature screenshots modal — hasta 10 imágenes por card + video opcional
@@ -797,68 +807,3 @@ cotForm.addEventListener('submit', function(e) {
 });
 }
 
-// ============================================================================
-// Demo form handling
-// ============================================================================
-var demoForm = document.getElementById('demoForm');
-if (demoForm) {
-demoForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    var nombre = document.getElementById('demo_nombre').value.trim();
-    var empresa = document.getElementById('demo_empresa').value.trim();
-    var email = document.getElementById('demo_email').value.trim();
-    var telefono = document.getElementById('demo_telefono').value.trim();
-    var comentario = document.getElementById('demo_comentario').value.trim();
-    
-    // Modulos seleccionados
-    var modulosSelect = document.getElementById('demo_modulos');
-    var modulos = [];
-    for (var i = 0; i < modulosSelect.selectedOptions.length; i++) {
-        modulos.push(modulosSelect.selectedOptions[i].value);
-    }
-    
-    if (!nombre || !empresa || !email) {
-        alert('Por favor complete nombre, empresa y email.');
-        return;
-    }
-    
-    // Deshabilitar boton
-    var btn = document.getElementById('demoBtn');
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Enviando...';
-    
-    // Enviar a Google Sheets
-    fetch('https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            tipo: 'DEMO',
-            nombre: nombre,
-            empresa: empresa,
-            email: email,
-            telefono: telefono,
-            modulos: modulos.join(', '),
-            comentario: comentario,
-            pagina: window.location.pathname + '#demo',
-            dispositivo: screen.width <= 768 ? 'Mobile' : 'Desktop',
-            fecha_local: new Date().toLocaleString('es-AR')
-        })
-    }).then(function() {
-        document.getElementById('demoForm').style.display = 'none';
-        document.getElementById('demoSuccess').style.display = '';
-    }).catch(function() {
-        document.getElementById('demoForm').style.display = 'none';
-        document.getElementById('demoSuccess').style.display = '';
-    });
-    
-    // Analytics event
-    if (typeof gtag === 'function') {
-        gtag('event', 'solicitud_demo', {
-            event_category: 'conversion',
-            event_label: empresa
-        });
-    }
-});
-}

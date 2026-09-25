@@ -35,6 +35,7 @@ dlForm.addEventListener('submit', function(e) {
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+            tipo: 'DESCARGA',
             nombre: nombre,
             empresa: empresa,
             email: email,
@@ -70,6 +71,64 @@ dlForm.addEventListener('submit', function(e) {
     window.location.href = downloadUrl;
     
     console.log('Lead registrado:', { nombre, empresa, email, equipos });
+});
+}
+
+// ============================================================================
+// Demo Online form handling — mismo backend/registro que la descarga, con
+// tipo 'DEMO' para distinguirlo en la planilla. Antes no tenía handler y el
+// botón "Solicitar acceso a la demo" no hacía nada.
+// ============================================================================
+var demoForm = document.getElementById('demoForm');
+if (demoForm) {
+demoForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var nombre = document.getElementById('demo_nombre').value.trim();
+    var empresa = document.getElementById('demo_empresa').value.trim();
+    var email = document.getElementById('demo_email').value.trim();
+    var telefono = document.getElementById('demo_telefono').value.trim();
+
+    if (!nombre || !empresa || !email) {
+        alert('Por favor complete nombre, empresa y email.');
+        return;
+    }
+
+    // Registrar en la misma planilla que la descarga (campo tipo = DEMO).
+    var params = new URLSearchParams(window.location.search);
+    fetch('https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            tipo: 'DEMO',
+            nombre: nombre,
+            empresa: empresa,
+            email: email,
+            telefono: telefono,
+            pagina: window.location.pathname,
+            utm_source: params.get('utm_source') || '(directo)',
+            utm_medium: params.get('utm_medium') || '',
+            utm_campaign: params.get('utm_campaign') || '',
+            idioma: navigator.language || '',
+            dispositivo: screen.width <= 768 ? 'Mobile' : 'Desktop',
+            fecha_local: new Date().toLocaleString('es-AR')
+        })
+    }).catch(function() {});
+
+    // Mostrar éxito
+    document.getElementById('demoForm').style.display = 'none';
+    document.getElementById('demoSuccess').style.display = '';
+
+    // Analytics event
+    if (typeof gtag === 'function') {
+        gtag('event', 'solicitud_demo', {
+            event_category: 'conversion',
+            event_label: empresa
+        });
+    }
+
+    console.log('Solicitud de demo registrada:', { nombre, empresa, email });
 });
 }
 

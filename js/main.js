@@ -19,7 +19,7 @@ window.addEventListener('scroll', function() {
 //   DESCARGA  → registra en la planilla + dispara la descarga del trial.
 // Ambos escriben en el mismo Google Apps Script con el campo 'tipo'.
 // ============================================================================
-var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec';
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyrZpyW8lquzUPl269RZ1SFN0lCO90fuJF01mH5w5hnE45YzGjscWypUeTiyTn6NYJxjw/exec';
 var TRIAL_DOWNLOAD_URL = 'https://github.com/sebastianbon-max/aiti-web/releases/download/v3.10.23/aiTi_Setup_v3.10.23.exe';
 
 // Actualiza textos/campos visibles según el modo elegido (DEMO / DESCARGA)
@@ -711,7 +711,7 @@ cotForm.addEventListener('submit', function(e) {
     
     // Enviar a Google Sheets
     var params = new URLSearchParams(window.location.search);
-    fetch('https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec', {
+    fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
@@ -778,7 +778,7 @@ cotForm.addEventListener('submit', function(e) {
     btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Enviando...';
 
     // Enviar a Google Sheets (mismo endpoint que descarga, con tipo=cotizacion)
-    fetch('https://script.google.com/macros/s/AKfycbzXLTlfnKcYxPoB5_vB36pMuq0xPaCSq8IGvcwM0LaQ51ucFVJQ64Dzsx-7aF_cLV5GXA/exec', {
+    fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
